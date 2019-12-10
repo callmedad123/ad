@@ -1,0 +1,193 @@
+<template>
+  <div>
+    <el-card>
+      <!-- 搜索栏 -->
+      <el-row>
+        <el-col :span="18">
+          <span>1</span>基本信息
+        </el-col>
+        <el-col :span="6">
+          <div class="search">
+            <el-input type="text" v-model="search"></el-input>
+
+            <el-button type="primary" size="small">搜索</el-button>
+            <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
+          </div>
+        </el-col>
+      </el-row>
+
+      <!-- 人员信息表格 -->
+      <el-table :data="tableData" border style="width: 100%;margin-bottom:15px;">
+        <el-table-column prop="num" label="序号" width="80"></el-table-column>
+        <el-table-column prop="code" label="广告主编码" width="180"></el-table-column>
+        <el-table-column prop="name" label="姓名" width="80"></el-table-column>
+        <el-table-column prop="tel" label="手机号"></el-table-column>
+        <el-table-column prop="idcard" label="身份证号"></el-table-column>
+        <el-table-column prop="balance" label="余额"></el-table-column>
+        <el-table-column fixed="right" label="操作" width="300">
+          <template slot-scope="scope">
+            <el-button @click="handleEdit(scope.$index, scope.row)" type="text" size="small">编辑</el-button>
+            <el-button type="text" size="small">资质信息</el-button>
+            <el-button type="text" size="small">充值</el-button>
+            <el-button type="text" size="small" @click="clickRecharge">充值记录</el-button>
+            <el-button type="text" size="small" @click="clickConsumption">消费记录</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <!-- 分页 -->
+      <div class="pages">
+        <el-pagination
+          background
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="5"
+          layout="prev, pager, next, jumper"
+          :total="50"
+        ></el-pagination>
+      </div>
+
+      <!-- 编辑 -->
+      <el-dialog title="修改信息" :visible.sync="dialogFormVisible">
+        <el-form :model="form">
+          <el-form-item label="姓名" :label-width="formLabelWidth">
+            <el-input v-model="form.name" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="人员编号" :label-width="formLabelWidth">
+            <el-input v-model="form.personID" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="单位名称" :label-width="formLabelWidth">
+            <el-input v-model="form.workName" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="身份证号" :label-width="formLabelWidth">
+            <el-input v-model="form.IDcard" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="投放端账号" :label-width="formLabelWidth">
+            <el-input v-model="form.acc" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" :label-width="formLabelWidth">
+            <el-input v-model="form.pwd" autocomplete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button type="primary" @click="clickOpen">确 定</el-button>
+        </div>
+      </el-dialog>
+    </el-card>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentPage: 1,
+      search: "",
+      tableData: [
+        {
+          num: 1,
+          code: "3884194194",
+          name: "王小虎",
+          idcard: 298848184888888194,
+          balance: 12.44,
+          tel: 18414819493
+        },
+        {
+          num: 2,
+          code: "3884193194",
+          name: "李小虎",
+          idcard: 298848185888888194,
+          balance: 12.54,
+          tel: 18414819497
+        },
+        {
+          num: 3,
+          code: "3884194594",
+          name: "赵小虎",
+          idcard: 298848183888888194,
+          balance: 12.64,
+          tel: 18414819490
+        }
+      ],
+      dialogFormVisible: false,
+      form: {
+        name: "",
+        personID: "",
+        workName: "",
+        IDcard: "",
+        acc: "",
+        pwd: ""
+      },
+      formLabelWidth: "120px"
+    };
+  },
+  methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
+    clickAdd() {
+      this.$router.history.push("/home/newadd");
+    },
+    handleEdit(index, row) {
+      console.log(index, row);
+      this.dialogFormVisible = true;
+    },
+    clickRecharge(){
+      this.$router.history.push('/home/recharge')
+    },
+    clickConsumption(){
+      this.$router.history.push('/home/consumption')
+    },
+    clickOpen() {
+      this.$confirm("确定修改, 是否继续?", "提示", {
+        confirmButtonText: "保存",
+        cancelButtonText: "放弃修改",
+        type: "warning"
+      })
+        .then(() => {
+          if (this.form.name == "dd") {
+            this.$message({
+              type: "success",
+              message: "修改成功!"
+            });
+            this.dialogFormVisible = false;
+          } else {
+            this.$message({
+              type: "warning",
+              message: "修改失败!"
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消修改"
+          });
+        });
+    }
+  }
+};
+</script>
+
+<style lang="less" scoped>
+.el-row {
+  margin-bottom: 20px;
+  span {
+    background: #ccc;
+    color: #ccc;
+    margin-right: 10px;
+  }
+  .el-input {
+    width: 40%;
+    margin-right: 20px;
+  }
+}
+.pages {
+  margin-top: 40px;
+  text-align: right;
+}
+</style>

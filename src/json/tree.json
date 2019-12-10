@@ -1,0 +1,72 @@
+[   
+    {
+      "path": "/index/0",
+      "icon": "el-icon-map-location",
+      "name": "区域管理",
+      "children": [
+        { "path": "/home/areamanage", "name": "区域管理"}
+      ]
+    },
+    {
+      "path": "/index/5",
+      "icon": "el-icon-star-on",
+      "name": "人员标签",
+      "children": [
+        { "path": "", "name": "人员标签管理" }
+        
+      ]
+    },
+    {
+      "path": "/index/3",
+      "icon": "el-icon-s-order",
+      "name": "广告投放计划",
+      "children": [
+        { "path": "/home/putplan", "name": "投放计划" },
+        { "path": "/home/putmanage", "name": "新增投放计划" }
+        
+      ]
+    },
+      {
+        "path": "/index/2",
+        "icon": "el-icon-s-custom",
+        "name": "广告主管理",
+        "children": [
+          { "path": "/home/personintro", "name": "基本信息" }
+         
+          
+        ]
+      },
+     
+      {
+        "path": "/index/4",
+        "icon": "el-icon-s-shop",
+        "name": "广告管理",
+        "children": [
+          {"path":"/home/admanage","name":"广告管理"},
+          
+          { "path": "/home/adaudit", "name": "广告审核" }
+        ]
+      },
+      {
+        "path": "/index/1",
+        "icon": "el-icon-s-data",
+        "name": "业务统计",
+        "children": [
+          { "path": "/home/statistical", "name": "投放统计" },
+          { "path": "/home/record", "name": "投放记录" }
+          
+        ]
+      },
+     
+      {
+        "path": "/index/6",
+        "icon": "el-icon-setting",
+        "name": "系统管理",
+        "children": [
+          { "path": "/home/usermanage", "name": "用户管理" },
+          { "path": "/home/rolemanage", "name": "角色管理"}
+        ]
+      }
+
+   
+  ]
