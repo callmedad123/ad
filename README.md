@@ -1,4 +1,5 @@
 # adpro
+<<<<<<< HEAD
 
 ## Project setup
 ```
