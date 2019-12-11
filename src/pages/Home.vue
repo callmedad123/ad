@@ -30,7 +30,7 @@
         <!-- 左边导航 -->
         <el-aside width="220px">
           <el-menu
-            default-active="2"
+            :default-active="$route.path"
             class="el-menu-vertical-demo"
             background-color="#545c64"
             text-color="#fff"
