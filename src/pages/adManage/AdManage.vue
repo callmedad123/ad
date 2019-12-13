@@ -64,7 +64,7 @@ export default {
     methods: {
       handleClick(row) {
         this.$store.commit('initadContent',row)
-        this.$router.history.push('/home/adedit')
+        this.$router.push({path:'/home/adedit'})
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);

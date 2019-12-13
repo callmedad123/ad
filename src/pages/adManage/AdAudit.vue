@@ -86,15 +86,15 @@ export default {
       input3:'',
       options: [
         {
-          value: "选项1",
+          value: 0,
           label: "全部状态"
         },
         {
-          value: "选项2",
+          value: 1,
           label: "待审核"
         },
         {
-          value: "选项3",
+          value: 2,
           label: "已驳回"
         }
       ],

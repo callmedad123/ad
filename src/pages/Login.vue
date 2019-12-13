@@ -14,7 +14,7 @@
         :rules="rules"
         ref="loginForm"   
         label-width="0px"
-        class="demo-ruleForm"
+        class="ruleForm"
       >
         <el-form-item  prop="acc" >
           <el-input type="text" v-model="loginForm.acc" autocomplete="off" prefix-icon="el-icon-user-solid" ></el-input>
@@ -58,7 +58,7 @@ export default {
             message: "登录成功",
             type: "success"
           });
-          this.$router.history.push("/home/todo");
+          this.$router.push({path:"/home/todo",});
         } else {
           this.$message({
             message: "登录失败，请检查账号和密码",
@@ -68,9 +68,7 @@ export default {
         }
       });
     },
-    clicklogin() {
-      this.$router.history.push("/home/todo");
-    }
+   
   }
 };
 </script>

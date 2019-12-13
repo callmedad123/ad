@@ -26,12 +26,13 @@
       <el-tab-pane label="已提交事项">已提交事项</el-tab-pane>
       <el-tab-pane label="已办事项">已办事项</el-tab-pane>
     </el-tabs>
-    <el-button icon="el-icon-refresh-right" type="text" class="refresh"></el-button>
+    <el-button icon="el-icon-refresh-right" type="text" class="refresh" @click="clickRefresh"></el-button>
   </el-card>
 </template>
 
 <script>
 export default {
+  inject:['reload'],
   methods: {
     handleClick(row) {
       console.log(row);
@@ -42,6 +43,9 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    clickRefresh(){
+      this.reload();
+    }
   },
   data() {
     return {
