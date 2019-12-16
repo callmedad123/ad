@@ -23,12 +23,12 @@
         <el-table-column prop="name" label="姓名" width="80"></el-table-column>
         <el-table-column prop="tel" label="手机号"></el-table-column>
         <el-table-column prop="idcard" label="身份证号"></el-table-column>
-        <el-table-column prop="balance" label="余额"></el-table-column>
+        <el-table-column prop="balance" label="余额(元)"></el-table-column>
         <el-table-column fixed="right" label="操作" width="300">
           <template slot-scope="scope">
             <el-button @click="handleEdit(scope.$index, scope.row)" type="text" size="small">编辑</el-button>
             <el-button type="text" size="small">资质信息</el-button>
-            <el-button type="text" size="small">充值</el-button>
+            <el-button type="text" size="small" @click="clickPay(scope.row)">充值</el-button>
             <el-button type="text" size="small" @click="clickRecharge">充值记录</el-button>
             <el-button type="text" size="small" @click="clickConsumption">消费记录</el-button>
           </template>
@@ -48,19 +48,16 @@
       </div>
 
       <!-- 编辑 -->
-      <el-dialog title="修改信息" :visible.sync="dialogFormVisible">
+      <el-dialog title="信息编辑" :visible.sync="dialogFormVisible">
         <el-form :model="form">
           <el-form-item label="姓名" :label-width="formLabelWidth">
             <el-input v-model="form.name" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="人员编号" :label-width="formLabelWidth">
-            <el-input v-model="form.personID" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="单位名称" :label-width="formLabelWidth">
-            <el-input v-model="form.workName" autocomplete="off"></el-input>
+          <el-form-item label="手机号" :label-width="formLabelWidth">
+            <el-input v-model="form.tel" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="身份证号" :label-width="formLabelWidth">
-            <el-input v-model="form.IDcard" autocomplete="off"></el-input>
+            <el-input v-model="form.idcard" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="投放端账号" :label-width="formLabelWidth">
             <el-input v-model="form.acc" autocomplete="off"></el-input>
@@ -72,6 +69,21 @@
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取 消</el-button>
           <el-button type="primary" @click="clickOpen">确 定</el-button>
+        </div>
+      </el-dialog>
+
+
+      <!-- 充值 -->
+      <el-dialog title="充值" :visible.sync="dialogFormVisible2" width="50%">
+        <el-form :model="form2">
+          <el-form-item label="余额" :label-width="formLabelWidth">
+            <el-input v-model="form2.balance" autocomplete="off"></el-input>
+           </el-form-item>
+           
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible2 = false">取 消</el-button>
+          <el-button type="primary" @click="clickSure">充值</el-button>
         </div>
       </el-dialog>
     </el-card>
@@ -111,13 +123,16 @@ export default {
         }
       ],
       dialogFormVisible: false,
+      dialogFormVisible2: false,
       form: {
         name: "",
-        personID: "",
-        workName: "",
-        IDcard: "",
+        tel: "",
+        idcard: "",
         acc: "",
         pwd: ""
+      },
+      form2:{
+        balance:0,
       },
       formLabelWidth: "120px"
     };
@@ -132,8 +147,12 @@ export default {
     clickAdd() {
       this.$router.history.push("/home/newadd");
     },
+    clickPay(val){
+      this.form2=val;
+      this.dialogFormVisible2=true;
+    },
     handleEdit(index, row) {
-      console.log(index, row);
+      this.form=row;
       this.dialogFormVisible = true;
     },
     clickRecharge(){
@@ -168,6 +187,34 @@ export default {
             message: "已取消修改"
           });
         });
+    },
+    clickSure(){
+      this.$confirm("确定充值, 是否继续?", "提示", {
+        confirmButtonText: "继续",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          if (this.form2.balance) {
+            this.$message({
+              type: "success",
+              message: "充值成功!"
+            });
+            this.dialogFormVisible = false;
+          } else {
+            this.$message({
+              type: "warning",
+              message: "充值失败!"
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消充值"
+          });
+        });
+
     }
   }
 };

@@ -7,8 +7,8 @@
         </div>
       </el-col>
       <el-col :span="6">
-        <div>
-          <el-input placeholder="请输入用户名" v-model="input1" clearable></el-input>
+        <div class="rightTop">
+          <el-input placeholder="请输入用户名" v-model="search" clearable></el-input>
           <el-button type="primary" size="small">搜索</el-button>
           <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
         </div>
@@ -26,7 +26,7 @@
           <el-button type="text" size="small" @click="clickChange">重置密码</el-button>
           <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
           <el-button type="text" size="small" @click="clickAuthorization(scope.row)">授权</el-button>
-          <el-button type="text" size="small" @click="clickDel(scope.row)">删除</el-button>
+          <el-button type="text" size="small" @click="clickDel(scope.$index)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -44,28 +44,52 @@
       ></el-pagination>
     </div>
 
-    <el-dialog title="角色授权" :visible.sync="dialogFormVisible" width="30%">
-      <el-form :model="form">
+    <el-dialog title="角色授权" :visible.sync="dialogFormVisible1" width="30%">
+      <el-form :model="form1" class="roleForm">
         <el-form-item>
-          <el-checkbox-group v-model="form.type">
-            <el-checkbox label="角色1" name="type"></el-checkbox>
-            <el-checkbox label="角色2" name="type"></el-checkbox>
-            <el-checkbox label="角色3" name="type"></el-checkbox>
-            <el-checkbox label="角色4" name="type"></el-checkbox>
+          <el-checkbox-group v-model="form1.type">
+            <el-checkbox label="运营人员" name="type"></el-checkbox>
+            <el-checkbox label="管理人员" name="type"></el-checkbox>
+            <el-checkbox label="财务人员" name="type"></el-checkbox>
           </el-checkbox-group>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="clickSave">确 定</el-button>
+        <el-button @click="dialogFormVisible1 = false">取 消</el-button>
+        <el-button type="primary" @click="clickSave1">确 定</el-button>
       </div>
     </el-dialog>
+
+     <!-- 编辑 -->
+      <el-dialog title="用户编辑" :visible.sync="dialogFormVisible2"  width="40%">
+        <el-form :model="form2" class="editForm">
+          <el-form-item label="用户名" :label-width="formLabelWidth">
+            <el-input v-model="form2.acc" ></el-input>
+          </el-form-item>
+          <el-form-item label="姓名" :label-width="formLabelWidth">
+            <el-input v-model="form2.name" ></el-input>
+          </el-form-item>
+          <el-form-item label="手机号" :label-width="formLabelWidth">
+            <el-input v-model="form2.tel" ></el-input>
+          </el-form-item>
+          
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisible2 = false">取 消</el-button>
+          <el-button type="primary" @click="clickSave2">确 定</el-button>
+        </div>
+      </el-dialog>
   </el-card>
 </template>
 
 <script>
 export default {
   methods: {
+    handleClick(val){
+        this.form2=val;
+        this.dialogFormVisible2 = true;
+
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
@@ -79,16 +103,22 @@ export default {
       this.$router.history.push("/home/useradd");
     },
     clickAuthorization() {
-      this.dialogFormVisible = true;
+      this.dialogFormVisible1 = true;
     },
-    clickSave() {
-      this.dialogFormVisible = false;
+    clickSave1() {
+      this.dialogFormVisible1 = false;
+    },
+    clickSave2() {
+      this.dialogFormVisible2 = false;
+    },
+    clickDel(index){
+      this.tableData.splice(index,1)
     }
   },
   data() {
     return {
       currentPage: 1,
-      input1: "",
+      search: "",
 
       tableData: [
         {
@@ -113,11 +143,17 @@ export default {
           time: "2016-05-06"
         }
       ],
-      dialogFormVisible: false,
-      form: {
+      dialogFormVisible1: false,
+      dialogFormVisible2: false,
+      form1: {
         type: []
       },
-      formLabelWidth: "120px"
+      form2:{
+        acc:'',
+        name:'',
+        tel:''
+      },
+      formLabelWidth: "100px"
     };
   }
 };
@@ -135,17 +171,23 @@ export default {
       margin-right: 10px;
     }
   }
-  .el-input {
+  .rightTop{
+    .el-input {
     width: 50%;
     margin: 0 10px;
   }
+  }
+  
   .pages {
     margin-top: 40px;
     text-align: right;
   }
   .el-dialog {
-    .el-form {
+    .roleForm{
       width: 20%;
+    }
+    .editForm{
+      width: 50%;
     }
   }
 }

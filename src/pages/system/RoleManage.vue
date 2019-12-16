@@ -24,7 +24,7 @@
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
           <el-button type="text" size="small" @click="clickAuthorization(scope.row)">授权</el-button>
-          <el-button type="text" size="small" @click="clickDel(scope.row)">删除</el-button>
+          <el-button type="text" size="small" @click="clickDel(scope.$index)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -78,6 +78,12 @@ export default {
     },
     clickSave() {
       this.dialogFormVisible = false;
+    },
+    clickDel(index){
+      this.tableData.splice(index,1)
+    },
+    clickAdd(){
+      this.$router.push({path:'/home/roleadd'})
     }
   },
   data() {

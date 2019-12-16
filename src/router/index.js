@@ -123,6 +123,16 @@ const routes = [
         name:'adedit',
         component:()=>import('../pages/adManage/AdEdit.vue')
       },
+      {
+        path:'/home/adwatch', //查看详情
+        name:'adwatch',
+        component:()=>import('../pages/adManage/AdWatch.vue')
+      },
+      {
+        path:'/home/operationrecords', //操作记录
+        name:'operationrecords',
+        component:()=>import('../pages/adManage/OperationRecords.vue')
+      },
 
       /*系统管理 */
       {
@@ -144,7 +154,12 @@ const routes = [
         path:'/home/rolemanage',//角色管理
         name:'rolemanage',
         component:()=>import('../pages/system/RoleManage.vue')
-      }
+      },
+      {
+        path:'/home/roleadd',//角色新增
+        name:'roleadd',
+        component:()=>import('../pages/system/RoleAdd.vue')
+      },
       
 
     ]

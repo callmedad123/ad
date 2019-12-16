@@ -37,8 +37,8 @@
             
             <el-button type="text" size="small" v-show="scope.row.status=='未通过'" @click="handleClick(scope.row)">查看并修改</el-button>
             <el-button type="text" size="small" v-show="scope.row.status=='已通过'">修改</el-button>
-            <el-button type="text" size="small" >操作记录</el-button>
-            <el-button type="text" size="small" v-show="scope.row.status!='审核中'">删除</el-button>
+            <el-button type="text" size="small" @click="clickOperation">操作记录</el-button>
+            <el-button type="text" size="small" v-show="scope.row.status!='审核中'" @click="clickDel(scope.$index)">删除</el-button>
 
           </template>
         </el-table-column>
@@ -74,6 +74,12 @@ export default {
       },
       clickAdd(){
         this.$router.history.push('/home/adcreate')
+      },
+      clickOperation(){
+        this.$router.push({path:'/home/operationrecords'})
+      },
+      clickDel(index){
+        this.tableData.splice(index,1)
       }
     },
 

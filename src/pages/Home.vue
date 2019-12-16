@@ -18,7 +18,7 @@
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item icon="el-icon-plus" command="a">修改密码</el-dropdown-item>
-                  <el-dropdown-item icon="el-icon-error">退出</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-error" command="b">退出</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -87,6 +87,12 @@ export default {
     clickPwd(command){
       if(command=='a'){
         this.$router.history.push("/home/pwdchange")
+      }else{
+        this.$router.push({path:'/'})
+        this.$message({
+            message: "已注销登录",
+            type: "warning"
+          });
       }
       
     }
