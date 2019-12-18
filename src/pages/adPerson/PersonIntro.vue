@@ -72,14 +72,13 @@
         </div>
       </el-dialog>
 
-
       <!-- 充值 -->
-      <el-dialog title="充值" :visible.sync="dialogFormVisible2" width="50%">
+      <el-dialog title="余额充值" :visible.sync="dialogFormVisible2" width="50%" class="pay">
         <el-form :model="form2">
           <el-form-item label="余额" :label-width="formLabelWidth">
             <el-input v-model="form2.balance" autocomplete="off"></el-input>
-           </el-form-item>
-           
+            <span> 元</span>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible2 = false">取 消</el-button>
@@ -131,8 +130,8 @@ export default {
         acc: "",
         pwd: ""
       },
-      form2:{
-        balance:0,
+      form2: {
+        balance: 0
       },
       formLabelWidth: "120px"
     };
@@ -147,19 +146,19 @@ export default {
     clickAdd() {
       this.$router.history.push("/home/newadd");
     },
-    clickPay(val){
-      this.form2=val;
-      this.dialogFormVisible2=true;
+    clickPay(val) {
+      this.form2 = val;
+      this.dialogFormVisible2 = true;
     },
     handleEdit(index, row) {
-      this.form=row;
+      this.form = row;
       this.dialogFormVisible = true;
     },
-    clickRecharge(){
-      this.$router.history.push('/home/recharge')
+    clickRecharge() {
+      this.$router.history.push("/home/recharge");
     },
-    clickConsumption(){
-      this.$router.history.push('/home/consumption')
+    clickConsumption() {
+      this.$router.history.push("/home/consumption");
     },
     clickOpen() {
       this.$confirm("确定修改, 是否继续?", "提示", {
@@ -188,7 +187,7 @@ export default {
           });
         });
     },
-    clickSure(){
+    clickSure() {
       this.$confirm("确定充值, 是否继续?", "提示", {
         confirmButtonText: "继续",
         cancelButtonText: "取消",
@@ -214,7 +213,6 @@ export default {
             message: "已取消充值"
           });
         });
-
     }
   }
 };
@@ -236,5 +234,10 @@ export default {
 .pages {
   margin-top: 40px;
   text-align: right;
+}
+.pay {
+  .el-input {
+    width: 60%;
+  }
 }
 </style>

@@ -14,10 +14,10 @@
         label-width="100px"
       >
         <el-form-item label="角色名" prop="roleName">
-          <el-input type="text" v-model="addForm.acc" autocomplete="off"></el-input>
+          <el-input type="text" v-model="addForm.roleName" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="备注" prop="mark">
-          <el-input type="password" v-model="addForm.pwd" autocomplete="off"></el-input>
+          <el-input type="text" v-model="addForm.mark" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="角色功能" prop="region">
     <el-select v-model="addForm.region" placeholder="功能选择">

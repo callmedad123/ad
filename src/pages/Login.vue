@@ -2,7 +2,7 @@
   <div class="box">
     <el-card>
       <div class="title">
-        <span>广告运营管理系统</span>
+        <span>广告运营端管理系统</span>
         <el-divider>
         <i class="el-icon-s-platform"></i>
       </el-divider>
@@ -36,11 +36,11 @@
 export default {
   data() {
     return {
-      loginForm: {
+      loginForm: {//登录表单
         acc:'',
         pwd: "",
       },
-      rules: {
+      rules: {//验证规则
         pwd: [{required: true, message:'密码不能为空', trigger: "blur" },
         { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
           ],

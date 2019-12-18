@@ -9,7 +9,6 @@
           </el-col>
           <el-col :span="3">
             <div class="user">
-              
               <el-dropdown trigger="click" class="username" @command="clickPwd">
                 <span class="el-dropdown-link">
                   <i class="el-icon-s-custom"></i>
@@ -77,26 +76,25 @@ import tree from "../json/tree.json";
 export default {
   data() {
     return {
-      menulist: [],
+      menulist: []
     };
   },
   created() {
     this.menulist = tree;
   },
   methods: {
-    clickPwd(command){
-      if(command=='a'){
-        this.$router.history.push("/home/pwdchange")
-      }else{
-        this.$router.push({path:'/'})
+    clickPwd(command) {
+      if (command == "a") {
+        this.$router.history.push("/home/pwdchange");
+      } else {
+        this.$router.push({ path: "/" });
         this.$message({
-            message: "已注销登录",
-            type: "warning"
-          });
+          message: "已注销登录",
+          type: "warning"
+        });
       }
-      
     }
-  },
+  }
 };
 </script>
 
@@ -104,36 +102,32 @@ export default {
 .box {
   height: 100%;
   .el-header {
-  background-color: #545c64;
-  border-bottom: 1px solid #ccc;
-  color: #fff;
-  height: 60px !important;
-  line-height: 60px;
+    background-color: #545c64;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+    height: 60px !important;
+    line-height: 60px;
 
-  .user {
-
-font-size: 14px;
-    .username {
-      margin-left: 20px;
-      .el-dropdown-link {
-        color: #fff;
+    .user {
+      font-size: 14px;
+      .username {
+        margin-left: 20px;
+        .el-dropdown-link {
+          color: #fff;
+        }
       }
     }
   }
-}
-.home{
-  height: 30px;
-  line-height: 30px;
+  .home {
+    height: 30px;
+    line-height: 30px;
 
-.todo {
+    .todo {
       color: #000;
       text-decoration: none;
     }
+  }
 }
-
-}
-
-
 
 .el-container {
   height: 100%;
@@ -145,7 +139,7 @@ font-size: 14px;
 .el-menu {
   border: none;
 }
-.el-main{
+.el-main {
   padding: 0 20px 20px;
 }
 </style>
