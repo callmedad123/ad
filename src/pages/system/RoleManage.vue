@@ -22,7 +22,7 @@
       <el-table-column prop="sort" label="排序"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
+          <el-button type="text" size="small" @click="handleClick(scope.$index,scope.row)">编辑</el-button>
           <el-button type="text" size="small" @click="clickAuthorization(scope.row)">授权</el-button>
           <el-button type="text" size="small" @click="clickDel(scope.$index)">删除</el-button>
         </template>
@@ -70,6 +70,15 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    handleClick(index,val){
+        this.$router.push({
+          path:'/home/roleAdd',
+          query:{
+            id:index,
+            tableData:val
+          }
+        })
+    },
     clickChange() {
       this.$router.history.push("/home/pwdchange");
     },
@@ -97,18 +106,21 @@ export default {
           roleName: "运营人员",
           mark: "渣渣灰",
           sort: 1,
+          region:'1'
         },
         {
           num: 2,
           roleName: "管理人员",
           mark: "古天乐",
           sort: 2,
+          region:'0'
         },
         {
           num: 3,
           roleName: "财务人员",
           mark: "999",
           sort: 3,
+          region:'2'
         },
         
       ],

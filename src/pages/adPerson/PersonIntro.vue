@@ -22,7 +22,7 @@
         <el-table-column prop="code" label="广告主编码" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="80"></el-table-column>
         <el-table-column prop="tel" label="手机号"></el-table-column>
-        <el-table-column prop="idcard" label="身份证号"></el-table-column>
+        <el-table-column prop="idCard" label="身份证号"></el-table-column>
         <el-table-column prop="balance" label="余额(元)"></el-table-column>
         <el-table-column fixed="right" label="操作" width="300">
           <template slot-scope="scope">
@@ -47,30 +47,7 @@
         ></el-pagination>
       </div>
 
-      <!-- 编辑 -->
-      <el-dialog title="信息编辑" :visible.sync="dialogFormVisible">
-        <el-form :model="form">
-          <el-form-item label="姓名" :label-width="formLabelWidth">
-            <el-input v-model="form.name" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="手机号" :label-width="formLabelWidth">
-            <el-input v-model="form.tel" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="身份证号" :label-width="formLabelWidth">
-            <el-input v-model="form.idcard" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="投放端账号" :label-width="formLabelWidth">
-            <el-input v-model="form.acc" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item label="密码" :label-width="formLabelWidth">
-            <el-input v-model="form.pwd" autocomplete="off"></el-input>
-          </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="clickOpen">确 定</el-button>
-        </div>
-      </el-dialog>
+      
 
       <!-- 充值 -->
       <el-dialog title="余额充值" :visible.sync="dialogFormVisible2" width="50%" class="pay">
@@ -100,7 +77,7 @@ export default {
           num: 1,
           code: "3884194194",
           name: "王小虎",
-          idcard: 298848184888888194,
+          idCard: 298848184888888194,
           balance: 12.44,
           tel: 18414819493
         },
@@ -108,7 +85,7 @@ export default {
           num: 2,
           code: "3884193194",
           name: "李小虎",
-          idcard: 298848185888888194,
+          idCard: 298848185888888194,
           balance: 12.54,
           tel: 18414819497
         },
@@ -116,20 +93,14 @@ export default {
           num: 3,
           code: "3884194594",
           name: "赵小虎",
-          idcard: 298848183888888194,
+          idCard: 298848183888888194,
           balance: 12.64,
           tel: 18414819490
         }
       ],
-      dialogFormVisible: false,
+      
       dialogFormVisible2: false,
-      form: {
-        name: "",
-        tel: "",
-        idcard: "",
-        acc: "",
-        pwd: ""
-      },
+      
       form2: {
         balance: 0
       },
@@ -151,8 +122,8 @@ export default {
       this.dialogFormVisible2 = true;
     },
     handleEdit(index, row) {
-      this.form = row;
-      this.dialogFormVisible = true;
+      this.$router.push({path:'/home/newadd', query: { id:index,tableData:row }})
+      
     },
     clickRecharge() {
       this.$router.history.push("/home/recharge");
@@ -160,33 +131,7 @@ export default {
     clickConsumption() {
       this.$router.history.push("/home/consumption");
     },
-    clickOpen() {
-      this.$confirm("确定修改, 是否继续?", "提示", {
-        confirmButtonText: "保存",
-        cancelButtonText: "放弃修改",
-        type: "warning"
-      })
-        .then(() => {
-          if (this.form.name == "dd") {
-            this.$message({
-              type: "success",
-              message: "修改成功!"
-            });
-            this.dialogFormVisible = false;
-          } else {
-            this.$message({
-              type: "warning",
-              message: "修改失败!"
-            });
-          }
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消修改"
-          });
-        });
-    },
+    
     clickSure() {
       this.$confirm("确定充值, 是否继续?", "提示", {
         confirmButtonText: "继续",

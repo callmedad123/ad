@@ -107,7 +107,7 @@ const routes = [{
         component: () => import('../pages/adManage/AdCreate.vue')
       },
       {
-        path: '/home/admanage', //广告查询
+        path: '/home/admanage', //广告管理
         name: 'admanage',
         component: () => import('../pages/adManage/AdManage.vue')
       },

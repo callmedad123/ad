@@ -9,6 +9,7 @@
       <el-table :data="tableData"  border style="width: 100%">
         <el-table-column prop="date" label="日期" width="180"></el-table-column>
         <el-table-column prop="name" label="名称" width="180"></el-table-column>
+        <el-table-column prop="people" label="操作人" width="180"></el-table-column>
         <el-table-column prop="operation" label="操作记录"></el-table-column>
       </el-table>
 
@@ -38,21 +39,25 @@ export default {
           {
               date:"2018-10-1",
               name:"xxx广告",
+              people:'小明',
               operation:'提交审核'
           },
           {
               date:"2018-10-2",
               name:"xxx广告",
+              people:'小红',
               operation:'审核驳回'
           },
           {
               date:"2018-10-2",
               name:"xxx广告",
+              people:'小绿',
               operation:'进行编辑'
           },
            {
               date:"2018-10-3",
               name:"xxx广告",
+              people:'大明',
               operation:'提交审核'
           },
       ]

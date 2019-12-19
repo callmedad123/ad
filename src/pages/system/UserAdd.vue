@@ -2,35 +2,40 @@
   <div>
     <el-card>
       <el-breadcrumb separator-class="el-icon-arrow-right">
-  <el-breadcrumb-item :to="{ path: '/home/usermanage' }">用户管理</el-breadcrumb-item>
-  <el-breadcrumb-item>用户新增</el-breadcrumb-item>
-  
-</el-breadcrumb>
+        <el-breadcrumb-item :to="{ path: '/home/usermanage' }">用户管理</el-breadcrumb-item>
+        <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
+      </el-breadcrumb>
       <el-form
         :model="addForm"
         status-icon
         :rules="rules"
         ref="addForm"
         label-width="100px"
-        class="demo-ruleForm"
+        :hide-required-asterisk="starShow"
       >
         <el-form-item label="账号" prop="acc">
           <el-input type="text" v-model="addForm.acc" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="pwd">
+        <el-form-item label="密码" prop="pwd" v-if="show">
           <el-input type="password" v-model="addForm.pwd" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="checkPwd">
-          <el-input type="password" v-model="addForm.checkPwd"></el-input>
+        <el-form-item label="确认密码" prop="checkPwd" v-if="show">
+          <el-input type="password" v-model="addForm.checkPwd" ></el-input>
+        </el-form-item>
+        <el-form-item label="姓名" prop="name">
+          <el-input type="text" v-model="addForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" prop="tel">
+          <el-input type="text" v-model="addForm.tel" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="用户类型" prop="region">
-    <el-select v-model="addForm.region" placeholder="请选择用户类型">
-      <el-option label="超级管理员" value="0"></el-option>
-      <el-option label="管理员" value="1"></el-option>
-    </el-select>
+          <el-select v-model="addForm.region" placeholder="请选择用户类型" :disabled='ban'>
+            <el-option label="超级管理员" value="0"></el-option>
+            <el-option label="管理员" value="1"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('addForm')">提交</el-button>
+          <el-button type="primary" @click="submitForm('addForm')">保存</el-button>
           <el-button @click="resetForm('addForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -40,6 +45,15 @@
 
 <script>
 export default {
+  created() {
+    if(this.$route.query.id>=0){
+      this.starShow=true;
+      this.show=false;
+      this.ban=true;
+      this.tag='编辑'
+      this.addForm=this.$route.query.tableData
+    }
+  },
   data() {
     var validatePwd = (rule, value, callback) => {
       if (value === "") {
@@ -61,23 +75,53 @@ export default {
       }
     };
     return {
+      starShow:false,//输入框前*显示与隐藏
+      show:true,//输入框显示与隐藏
+      ban:false,//输入框禁用
+      tag:'用户新增',
       addForm: {
         pwd: "",
         checkPwd: "",
         acc: "",
-        region:'',
+        name: "",
+        tel: "",
+        region: ""
       },
       rules: {
-        pwd: [{ required: true,validator: validatePwd, trigger: "blur" },
-              { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
-          ],
-        checkPwd: [{required: true, validator: validatePwd2, trigger: "blur" }],
-        acc: [{required: true, message:'账号不能为空', trigger: "blur" },
-               { min: 6, max: 10, message: '长度在 6 到 10 个字符', trigger: 'blur' }
+        pwd: [
+          { required: true, validator: validatePwd, trigger: "blur" },
+          { min: 6, max: 16, message: "长度在 6 到 16 个字符", trigger: "blur" }
+        ],
+        checkPwd: [
+          { required: true, validator: validatePwd2, trigger: "blur" }
+        ],
+        acc: [
+          { required: true, message: "账号不能为空", trigger: "blur" },
+          { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
         ],
         region: [
-            { required: true, message: '请选择用户类型', trigger: 'change' }
-          ],
+          { required: true, message: "请选择用户类型", trigger: "change" }
+        ],
+        name: [
+          {
+            required: true,
+            message: "请输入姓名",
+            trigger: "blur"
+          }
+        ],
+        tel: [
+          {
+            required: true,
+            message: "请输入手机号",
+            trigger: "blur"
+          },
+          {
+            min: 11,
+            max: 11,
+            message: "请注意手机号格式",
+            trigger: "blur"
+          }
+        ]
       }
     };
   },
@@ -86,12 +130,12 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$message({
-            message: "添加成功",
+            message: "保存成功",
             type: "success"
           });
         } else {
           this.$message({
-            message: "添加失败",
+            message: "保存失败",
             type: "warning"
           });
           return false;
@@ -106,7 +150,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-breadcrumb{
+.el-breadcrumb {
   font-size: 16px;
   margin-bottom: 20px;
 }

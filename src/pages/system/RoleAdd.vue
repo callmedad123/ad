@@ -3,7 +3,7 @@
     <el-card>
       <el-breadcrumb separator-class="el-icon-arrow-right">
   <el-breadcrumb-item :to="{ path: '/home/rolemanage' }">角色管理</el-breadcrumb-item>
-  <el-breadcrumb-item>角色新增</el-breadcrumb-item>
+  <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
   
 </el-breadcrumb>
       <el-form
@@ -12,6 +12,7 @@
         :rules="rules"
         ref="addForm"
         label-width="100px"
+        :hide-required-asterisk="starShow"
       >
         <el-form-item label="角色名" prop="roleName">
           <el-input type="text" v-model="addForm.roleName" autocomplete="off"></el-input>
@@ -20,11 +21,11 @@
           <el-input type="text" v-model="addForm.mark" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="角色功能" prop="region">
-    <el-select v-model="addForm.region" placeholder="功能选择">
+    <el-select v-model="addForm.region" placeholder="功能选择" :disabled='ban'>
       <el-option label="功能1" value="0"></el-option>
       <el-option label="功能2" value="1"></el-option>
-      <el-option label="功能3" value="1"></el-option>
-      <el-option label="功能4" value="1"></el-option>
+      <el-option label="功能3" value="2"></el-option>
+      <el-option label="功能4" value="3"></el-option>
     </el-select>
         </el-form-item>
         <el-form-item>
@@ -38,8 +39,19 @@
 
 <script>
 export default {
+  created() {
+    if(this.$route.query.id>=0){
+      this.tag='编辑';
+      this.ban=true;
+      this.starShow=true;
+      this.addForm=this.$route.query.tableData;
+    }
+  },
   data() {
     return {
+      ban:false,//输入框状态
+      tag:"角色新增",
+      starShow:false,//输入框前*显示与隐藏
       addForm: {
         roleName: "",
         mark: "",
@@ -86,6 +98,6 @@ export default {
   margin-bottom: 20px;
 }
 .el-input {
-  width: 50%;
+  width: 30%;
 }
 </style>

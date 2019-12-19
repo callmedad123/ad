@@ -24,7 +24,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="clickChange">重置密码</el-button>
-          <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
+          <el-button type="text" size="small" @click="handleClick(scope.$index,scope.row)">编辑</el-button>
           <el-button type="text" size="small" @click="clickAuthorization(scope.row)">授权</el-button>
           <el-button type="text" size="small" @click="clickDel(scope.$index)">删除</el-button>
         </template>
@@ -44,6 +44,8 @@
       ></el-pagination>
     </div>
 
+
+<!-- 授权 -->
     <el-dialog title="角色授权" :visible.sync="dialogFormVisible1" width="30%">
       <el-form :model="form1" class="roleForm">
         <el-form-item>
@@ -60,34 +62,21 @@
       </div>
     </el-dialog>
 
-     <!-- 编辑 -->
-      <el-dialog title="用户编辑" :visible.sync="dialogFormVisible2"  width="40%">
-        <el-form :model="form2" class="editForm">
-          <el-form-item label="用户名" :label-width="formLabelWidth">
-            <el-input v-model="form2.acc" ></el-input>
-          </el-form-item>
-          <el-form-item label="姓名" :label-width="formLabelWidth">
-            <el-input v-model="form2.name" ></el-input>
-          </el-form-item>
-          <el-form-item label="手机号" :label-width="formLabelWidth">
-            <el-input v-model="form2.tel" ></el-input>
-          </el-form-item>
-          
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible2 = false">取 消</el-button>
-          <el-button type="primary" @click="clickSave2">确 定</el-button>
-        </div>
-      </el-dialog>
+    
   </el-card>
 </template>
 
 <script>
 export default {
   methods: {
-    handleClick(val){
-        this.form2=val;
-        this.dialogFormVisible2 = true;
+    handleClick(index,val){
+        this.$router.push({
+          path:"/home/useradd",
+          query:{
+            id:index,
+            tableData:val
+          }
+        })
 
     },
     handleSizeChange(val) {
@@ -97,7 +86,7 @@ export default {
       console.log(`当前页: ${val}`);
     },
     clickChange() {
-      this.$router.history.push("/home/pwdchange");
+      this.$router.push({path:"/home/pwdchange"});
     },
     clickAdd() {
       this.$router.history.push("/home/useradd");
@@ -107,9 +96,6 @@ export default {
     },
     clickSave1() {
       this.dialogFormVisible1 = false;
-    },
-    clickSave2() {
-      this.dialogFormVisible2 = false;
     },
     clickDel(index){
       this.tableData.splice(index,1)
@@ -126,33 +112,32 @@ export default {
           acc: "zhazhahui",
           name: "渣渣灰",
           tel: 13424249294,
-          time: "2016-05-02"
+          time: "2016-05-02",
+          region:'0'
         },
         {
           num: 2,
           acc: "xiaoming",
           name: "小明",
           tel: 13424249295,
-          time: "2016-05-04"
+          time: "2016-05-04",
+          region:'1'
         },
         {
           num: 3,
           acc: "zhazhahui",
           name: "小红",
           tel: 13424249394,
-          time: "2016-05-06"
+          time: "2016-05-06",
+          region:'0'
         }
       ],
       dialogFormVisible1: false,
-      dialogFormVisible2: false,
+
       form1: {
         type: []
       },
-      form2:{
-        acc:'',
-        name:'',
-        tel:''
-      },
+     
       formLabelWidth: "100px"
     };
   }
@@ -185,9 +170,6 @@ export default {
   .el-dialog {
     .roleForm{
       width: 20%;
-    }
-    .editForm{
-      width: 50%;
     }
   }
 }
