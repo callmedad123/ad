@@ -34,57 +34,87 @@
       </el-col>
     </el-row>
     <!-- 计划内容 -->
-    <el-table :data="tableData" border style="width: 100%">
+    <el-table :data="tableData" border style="width: 100%" @cell-click="viewDownStatus">
       <el-table-column fixed prop="num" label="序号" width="50"></el-table-column>
-      <el-table-column prop="code" label="计划编号" width="220"></el-table-column>
+      <el-table-column prop="code" label="计划编号" width="180"></el-table-column>
       <el-table-column prop="personName" label="广告主" width="80"></el-table-column>
       <el-table-column prop="areaNum" label="投放区域数量" width="120"></el-table-column>
       <el-table-column prop="status" label="状态" width="80"></el-table-column>
-      <el-table-column prop="time" label="创建时间" width="220"></el-table-column>
+      <el-table-column prop="time" label="创建时间" width="180"></el-table-column>
       <el-table-column prop="machineNum" label="投放门禁机数量" width="120"></el-table-column>
       <el-table-column prop="counts" label="已投放次数" width="100"></el-table-column>
+      <el-table-column prop="downStatus" label="下发状态"></el-table-column>
       <el-table-column fixed="right" label="操作" width="140">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small" v-show="scope.row.status=='未开始'">编辑</el-button>
+          <el-button
+            @click="handleClick(scope.row)"
+            type="text"
+            size="small"
+            v-show="scope.row.status=='未开始'"
+          >编辑</el-button>
           <el-button type="text" size="small" v-show="scope.row.status=='投放中'">结束</el-button>
-          <el-button type="text" size="small" v-show="scope.row.status=='已结束'||scope.row.status=='投放中'" @click="clickRecord">投放记录</el-button>
+          <el-button
+            type="text"
+            size="small"
+            v-show="scope.row.status=='已结束'||scope.row.status=='投放中'"
+            @click="clickRecord"
+          >投放记录</el-button>
+          <el-button
+            type="text"
+            size="small"
+            v-show="scope.row.downStatus!='已完成' && scope.row.downStatus!='待下发'"
+          >重新下发</el-button>
+          <el-button type="text" size="small" v-show="scope.row.downStatus =='待下发'">下发</el-button>
           <el-button type="text" size="small" v-show="scope.row.status=='未开始'">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="pages">
-        <el-pagination
+      <el-pagination
         background
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page.sync="currentPage"
-      :page-size="5"
-      layout="prev, pager, next, jumper"
-      :total="50">
-    </el-pagination>
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-size="5"
+        layout="prev, pager, next, jumper"
+        :total="50"
+      ></el-pagination>
     </div>
-    
+<!-- 广告下发记录 -->
+    <el-dialog title="广告下发记录" :visible.sync="dialogTableVisible" >
+  <el-table :data="gridData" border>
+    <el-table-column property="num" label="序号" width="150"></el-table-column>
+    <el-table-column property="deviceName" label="设备名称" width="200"></el-table-column>
+    <el-table-column property="status" label="下发状态"></el-table-column>
+    <el-table-column property="date" label="时间"></el-table-column>
+  </el-table>
+   <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogTableVisible = false">关闭</el-button>
+  </div>
+</el-dialog>
   </el-card>
+
+  
 </template>
 
 <script>
 export default {
   data() {
     return {
-        currentPage: 1,
+      currentPage: 1,
       input1: "",
       input2: "",
       options: [
         {
-          value: "选项1",
+          value: "0",
           label: "未开始"
         },
         {
-          value: "选项2",
+          value: "1",
           label: "投放中"
         },
         {
-          value: "选项3",
+          value: "2",
           label: "已结束"
         }
       ],
@@ -130,7 +160,8 @@ export default {
           status: "投放中",
           time: "2017-12-11",
           machineNum: 2,
-          counts: 100
+          counts: 100,
+          downStatus: "成功"
         },
         {
           num: 2,
@@ -140,7 +171,8 @@ export default {
           status: "已结束",
           time: "2017-12-11",
           machineNum: 23,
-          counts: 102
+          counts: 102,
+          downStatus: "已完成"
         },
         {
           num: 3,
@@ -150,22 +182,58 @@ export default {
           status: "未开始",
           time: "2017-12-10",
           machineNum: 23,
-          counts: 190
+          counts: 190,
+          downStatus: "失败"
+        },
+        {
+          num: 4,
+          code: "2016-05-03",
+          personName: "朱小虎",
+          areaNum: 6,
+          status: "未开始",
+          time: "2017-12-10 14:11:20",
+          machineNum: 23,
+          counts: 190,
+          downStatus: "待下发"
         }
-      ]
+      ],
+      gridData: [{
+          num:1,
+          status:'成功',
+          date: '2016-05-02 13:11:10',
+          deviceName: '东门进',
+        }, {
+          num:2,
+          status:'成功',
+          date: '2016-05-02 13:11:10',
+          deviceName: '东门出',
+        }, 
+        {
+          num:3,
+          status:'失败',
+          date: '2016-05-02 14:11:10',
+          deviceName: '本门进',
+        }, 
+        ],
+        dialogTableVisible: false,//弹出框
     };
   },
-   methods: {
-      handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
-      clickRecord(){
-        this.$router.history.push('/home/putrecord')
-      }
+  methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
     },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
+    clickRecord() {
+      this.$router.history.push("/home/putrecord");
+    },
+    viewDownStatus(row, column) {
+      if (column.id == "el-table_1_column_9") {
+       this.dialogTableVisible=true;
+      }
+    }
+  }
 };
 </script>
 
@@ -193,9 +261,9 @@ export default {
   .el-button {
     margin-left: 10px;
   }
-  .pages{
-      margin-top:40px;
-      text-align: right;
+  .pages {
+    margin-top: 40px;
+    text-align: right;
   }
 }
 </style>

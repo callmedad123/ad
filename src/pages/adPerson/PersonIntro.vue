@@ -50,15 +50,15 @@
       
 
       <!-- 充值 -->
-      <el-dialog title="余额充值" :visible.sync="dialogFormVisible2" width="50%" class="pay">
-        <el-form :model="form2">
+      <el-dialog title="余额充值" :visible.sync="dialogFormVisible" width="50%" class="pay">
+        <el-form :model="form">
           <el-form-item label="余额" :label-width="formLabelWidth">
-            <el-input v-model="form2.balance" autocomplete="off"></el-input>
+            <el-input v-model="form.balance" autocomplete="off"></el-input>
             <span> 元</span>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible2 = false">取 消</el-button>
+          <el-button @click="dialogFormVisible = false">取 消</el-button>
           <el-button type="primary" @click="clickSure">充值</el-button>
         </div>
       </el-dialog>
@@ -99,9 +99,9 @@ export default {
         }
       ],
       
-      dialogFormVisible2: false,
+      dialogFormVisible: false,
       
-      form2: {
+      form: {
         balance: 0
       },
       formLabelWidth: "120px"
@@ -118,8 +118,8 @@ export default {
       this.$router.history.push("/home/newadd");
     },
     clickPay(val) {
-      this.form2 = val;
-      this.dialogFormVisible2 = true;
+      this.form = val;
+      this.dialogFormVisible = true;
     },
     handleEdit(index, row) {
       this.$router.push({path:'/home/newadd', query: { id:index,tableData:row }})
@@ -139,7 +139,7 @@ export default {
         type: "warning"
       })
         .then(() => {
-          if (this.form2.balance) {
+          if (this.form.balance) {
             this.$message({
               type: "success",
               message: "充值成功!"

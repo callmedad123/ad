@@ -34,6 +34,9 @@
 
 <script>
 export default {
+  created() {
+    this.enterLogin()
+  },  
   data() {
     return {
       loginForm: {//登录表单
@@ -68,6 +71,15 @@ export default {
         }
       });
     },
+    enterLogin(){//回车登录
+      let _this =this;
+    document.onkeydown=function(e){
+      e=window.event || e
+      if(e.code=='Enter' || e.code=='Num Enter'){
+        _this.submitForm("loginForm")
+      }
+    }
+    }
    
   }
 };

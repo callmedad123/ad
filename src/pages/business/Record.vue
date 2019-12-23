@@ -55,6 +55,7 @@
       <el-table-column prop="planName" label="广告计划名称" ></el-table-column>
       <el-table-column prop="adName" label="投放广告名称" ></el-table-column>
       <el-table-column prop="username" label="被投放人姓名" ></el-table-column>
+       <el-table-column prop="servePrice" label="广告服务费" ></el-table-column>
       <el-table-column prop="time" label="投放时间" width="180" ></el-table-column>
       
     </el-table>
@@ -130,6 +131,7 @@ export default {
             planName:'月饼投放计划',
             adName:'大闸蟹',
             username:'老王',
+            servePrice:0.01,
           time: "2016-05-02",
         },
         {  
@@ -139,6 +141,7 @@ export default {
             planName:'月饼投放计划',
             adName:'大闸蟹',
             username:'老王',
+             servePrice:0.02,
           time: "2016-05-02",
         },
         {  
@@ -148,6 +151,7 @@ export default {
             planName:'月饼投放计划',
             adName:'大闸蟹',
             username:'老王',
+             servePrice:0.01,
           time: "2016-05-02",
         },
         {  
@@ -157,6 +161,7 @@ export default {
             planName:'月饼投放计划',
             adName:'大闸蟹',
             username:'老王',
+             servePrice:0.01,
           time: "2016-05-02",
         },
         

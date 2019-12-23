@@ -70,9 +70,9 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
-    handleClick(index,val){
+    handleClick(index,val){//跳转编辑
         this.$router.push({
-          path:'/home/roleAdd',
+          path:'/home/roleadd',
           query:{
             id:index,
             tableData:val
@@ -80,7 +80,7 @@ export default {
         })
     },
     clickChange() {
-      this.$router.history.push("/home/pwdchange");
+      this.$router.push({path:"/home/pwdchange"});
     },
     clickAuthorization() {
       this.dialogFormVisible = true;
@@ -91,7 +91,7 @@ export default {
     clickDel(index){
       this.tableData.splice(index,1)
     },
-    clickAdd(){
+    clickAdd(){//跳转新增
       this.$router.push({path:'/home/roleadd'})
     }
   },

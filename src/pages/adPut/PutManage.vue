@@ -21,7 +21,7 @@
             <el-option label="广告主2" value="adP2"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="投放时间" required>
+        <el-form-item label="投放时间" prop="date">
          <el-date-picker
       v-model="adForm.date"
       type="datetimerange"
@@ -82,7 +82,7 @@ export default {
           {
             type: "date",
             required: true,
-            message: "请选择日期与日期",
+            message: "请选择日期与时间",
             trigger: "change"
           }
         ],

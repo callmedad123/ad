@@ -83,11 +83,7 @@ const routes = [{
         component: () => import('../pages/adPut/PutManage.vue')
       },
 
-      {
-        path: '/home/putcontent', //投放明细
-        name: 'putcontent',
-        component: () => import('../pages/adPut/PutContent.vue')
-      },
+    
       {
         path: '/home/putplan', //投放计划
         name: 'putplan',

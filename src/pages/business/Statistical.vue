@@ -49,7 +49,8 @@
 
     <el-table :data="tableData" border style="width: 100%" show-summary>
       <el-table-column prop="time" label="投放时间" width="320"></el-table-column>
-      <el-table-column prop="counts" label="投放数量" width="320"></el-table-column>
+      <el-table-column prop="counts" label="投放数量(次)" width="320"></el-table-column>
+      <el-table-column prop="servePrice" label="广告服务费(元)" width="260"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleClick(scope.row)">查看详情</el-button>
@@ -81,8 +82,8 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
-    handleClick(row){
-      this.$router.history.push('/home/dayrecord')
+    handleClick(){
+      this.$router.push({path:'/home/dayrecord'})
     }
   },
   data() {
@@ -137,19 +138,23 @@ export default {
       tableData: [
         {
           time: "2016-05-02",
-          counts: 1235
+          counts: 1235,
+          servePrice:231.01
         },
         {
           time: "2016-05-03",
-          counts: 1231
+          counts: 1231,
+          servePrice:232
         },
         {
           time: "2016-05-04",
-          counts: 1232
+          counts: 1232,
+          servePrice:281.01
         },
         {
           time: "2016-05-05",
-          counts: 1234
+          counts: 1234,
+          servePrice:331.01
         }
       ]
     };
