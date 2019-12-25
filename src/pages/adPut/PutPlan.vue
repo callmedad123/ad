@@ -34,7 +34,14 @@
       </el-col>
     </el-row>
     <!-- 计划内容 -->
-    <el-table :data="tableData" border style="width: 100%" @cell-click="viewDownStatus">
+
+    <el-table
+      :data="tableData"
+      border
+      style="width: 100%"
+      @cell-click="viewDownStatus"
+      :cell-style="cellStyle"
+    >
       <el-table-column fixed prop="num" label="序号" width="50"></el-table-column>
       <el-table-column prop="code" label="计划编号" width="180"></el-table-column>
       <el-table-column prop="personName" label="广告主" width="80"></el-table-column>
@@ -69,6 +76,7 @@
         </template>
       </el-table-column>
     </el-table>
+
     <div class="pages">
       <el-pagination
         background
@@ -80,21 +88,19 @@
         :total="50"
       ></el-pagination>
     </div>
-<!-- 广告下发记录 -->
-    <el-dialog title="广告下发记录" :visible.sync="dialogTableVisible" >
-  <el-table :data="gridData" border>
-    <el-table-column property="num" label="序号" width="150"></el-table-column>
-    <el-table-column property="deviceName" label="设备名称" width="200"></el-table-column>
-    <el-table-column property="status" label="下发状态"></el-table-column>
-    <el-table-column property="date" label="时间"></el-table-column>
-  </el-table>
-   <div slot="footer" class="dialog-footer">
-    <el-button @click="dialogTableVisible = false">关闭</el-button>
-  </div>
-</el-dialog>
+    <!-- 广告下发记录 -->
+    <el-dialog title="广告下发记录" :visible.sync="dialogTableVisible">
+      <el-table :data="gridData" border>
+        <el-table-column property="num" label="序号" width="150"></el-table-column>
+        <el-table-column property="deviceName" label="设备名称" width="200"></el-table-column>
+        <el-table-column property="status" label="下发状态"></el-table-column>
+        <el-table-column property="date" label="时间"></el-table-column>
+      </el-table>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogTableVisible = false">关闭</el-button>
+      </div>
+    </el-dialog>
   </el-card>
-
-  
 </template>
 
 <script>
@@ -197,25 +203,27 @@ export default {
           downStatus: "待下发"
         }
       ],
-      gridData: [{
-          num:1,
-          status:'成功',
-          date: '2016-05-02 13:11:10',
-          deviceName: '东门进',
-        }, {
-          num:2,
-          status:'成功',
-          date: '2016-05-02 13:11:10',
-          deviceName: '东门出',
-        }, 
+      gridData: [
         {
-          num:3,
-          status:'失败',
-          date: '2016-05-02 14:11:10',
-          deviceName: '本门进',
-        }, 
-        ],
-        dialogTableVisible: false,//弹出框
+          num: 1,
+          status: "成功",
+          date: "2016-05-02 13:11:10",
+          deviceName: "东门进"
+        },
+        {
+          num: 2,
+          status: "成功",
+          date: "2016-05-02 13:11:10",
+          deviceName: "东门出"
+        },
+        {
+          num: 3,
+          status: "失败",
+          date: "2016-05-02 14:11:10",
+          deviceName: "本门进"
+        }
+      ],
+      dialogTableVisible: false //弹出框
     };
   },
   methods: {
@@ -228,11 +236,19 @@ export default {
     clickRecord() {
       this.$router.history.push("/home/putrecord");
     },
-    viewDownStatus(row, column) {
-      if (column.id == "el-table_1_column_9") {
-       this.dialogTableVisible=true;
+    viewDownStatus(row, column) {//单元格点击
+      if (column.label =="下发状态") {
+        this.dialogTableVisible = true;
       }
-    }
+    },
+    cellStyle({ columnIndex }) {//单元格样式修改
+      if (columnIndex === 8) {
+        // 指定列号
+        return "color:red";
+      } else {
+        return "";
+      }
+    },
   }
 };
 </script>
