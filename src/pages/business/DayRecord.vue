@@ -61,7 +61,7 @@ export default {
         yAxis: {
           type: "value",
           axisLabel: {
-            formatter: "{value} W"
+            formatter: "{value} 次"
           },
           axisPointer: {
             snap: true

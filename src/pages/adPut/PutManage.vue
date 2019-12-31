@@ -32,9 +32,9 @@
         </el-form-item>
         <el-form-item label="投放区域" prop="area">
           <el-select v-model="adForm.area" placeholder="请选择投放区域" multiple>
-            <el-option label="a小区" value="area1"></el-option>
-            <el-option label="b小区" value="area2"></el-option>
-            <el-option label="c小区" value="area3"></el-option>
+            <el-option label="a小区" value="1"></el-option>
+            <el-option label="b小区" value="2"></el-option>
+            <el-option label="c小区" value="3"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="投放价格" prop="price">

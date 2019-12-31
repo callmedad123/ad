@@ -1,14 +1,15 @@
+import Cookies from 'js-cookie'
 
-const TokenKey = 'Admin-Token'
+const TokenKey = 'adpro_token'
 
 export function getToken() {
-  return localStorage.get(TokenKey)
+  return Cookies.get(TokenKey)
 }
 
 export function setToken(token) {
-  return localStorage.set(TokenKey, token)
+  return Cookies.set(TokenKey, token)
 }
 
 export function removeToken() {
-  return localStorage.remove(TokenKey)
+  return Cookies.remove(TokenKey)
 }

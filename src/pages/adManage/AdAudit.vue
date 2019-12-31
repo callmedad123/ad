@@ -3,12 +3,12 @@
     <el-card>
       
       <el-row>
-      <el-col :span="6">
+      <el-col :span="8">
         <div class="title">
           <span>1</span>广告审核
         </div>
       </el-col>
-      <el-col :span="18">
+      <el-col :span="16">
         <div>
           <el-input placeholder="请输入内容" v-model="input1" clearable></el-input>
           <el-input placeholder="请输入内容" v-model="input2" clearable></el-input>
@@ -22,13 +22,12 @@
             ></el-option>
           </el-select>
           <el-button type="primary"  size="small">搜索</el-button>
-          <el-button type="primary"  size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>
     </el-row>
       <el-table :data="tableData" border style="width: 100%">
           <el-table-column fixed prop="num" label="序号" width="80"></el-table-column>
-        <el-table-column  prop="code" label="广告主编码" width="180"></el-table-column>
+        <el-table-column  prop="personID" label="广告主ID" width="180"></el-table-column>
         <el-table-column prop="adName" label="广告名称" ></el-table-column>
         <el-table-column prop="type" label="广告类型" width="140"></el-table-column>
         <el-table-column prop="time" label="创建时间" ></el-table-column>
@@ -101,7 +100,7 @@ export default {
       value: "", //状态
         tableData: [{
           num:1,
-          code: '2016-05-02',
+          personID: '2016-05-02',
           adName: 'xxxxx广告',
           type: '门卫机广告',
           time:'2018-10-01 12:30:03',
@@ -111,7 +110,7 @@ export default {
         },
         {
           num:2,
-          code: '2016-05-03',
+          personID: '2016-05-03',
           adName: 'axxxx广告',
           type: '门卫机广告',
           time:'2018-10-01 12:10:03',
@@ -121,7 +120,7 @@ export default {
         },
         {
           num:3,
-          code: '2016-05-04',
+          personID: '2016-05-04',
           adName: 'bxxxx广告',
           type: '平面广告',
           time:'2018-10-01 12:20:03',
@@ -131,7 +130,7 @@ export default {
         },
         {
           num:4,
-          code: '2016-05-05',
+          personID: '2016-05-05',
           adName: 'xxxxx广告',
           type: '门卫机广告',
           time:'2018-10-01 12:04:03',
@@ -161,7 +160,7 @@ export default {
   }
   .el-input,
   .el-select {
-    width: 18%;
+    width: 20%;
     margin:0 10px;
   }
   .pages{
