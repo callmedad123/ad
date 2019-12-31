@@ -4,16 +4,17 @@
       <!-- 搜索栏 -->
       <el-row>
         <el-col :span="18">
+        <div class="title">
           <span>1</span>基本信息
-        </el-col>
-        <el-col :span="6">
-          <div class="search">
-            <el-input type="text" v-model="search"></el-input>
-
-            <el-button type="primary" size="small">搜索</el-button>
-            <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
-          </div>
-        </el-col>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div class="rightTop">
+          <el-input placeholder="请输入内容" v-model="search" clearable></el-input>
+          <el-button type="primary" size="small">搜索</el-button>
+          <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
+        </div>
+      </el-col>
       </el-row>
 
       <!-- 人员信息表格 -->
@@ -165,15 +166,19 @@ export default {
 
 <style lang="less" scoped>
 .el-row {
-  margin-bottom: 20px;
-  span {
-    background: #ccc;
-    color: #ccc;
-    margin-right: 10px;
+  .title {
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 40px;
+    span {
+      color: #ccc;
+      background: #ccc;
+      margin-right: 10px;
+    }
   }
   .el-input {
-    width: 40%;
-    margin-right: 20px;
+    width: 48%;
+    margin: 0 10px;
   }
 }
 .pages {

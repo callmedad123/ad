@@ -89,9 +89,9 @@ export default {
 .box {
   width: 100%;
   height: 100%;
-  background: rgba(88, 92, 99, 0.8);
-}
-.el-card {
+  background: url('../assets/imgs/timg.jpeg') no-repeat;
+  background-size: cover;
+  .el-card {
   width: 400px;
   position: absolute;
   top: 50%;
@@ -112,4 +112,6 @@ export default {
     width: 100%;
   }
 }
+}
+
 </style>

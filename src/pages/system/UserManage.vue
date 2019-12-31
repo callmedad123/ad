@@ -158,7 +158,7 @@ export default {
   }
   .rightTop{
     .el-input {
-    width: 50%;
+    width: 48%;
     margin: 0 10px;
   }
   }

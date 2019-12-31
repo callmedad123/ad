@@ -4,7 +4,12 @@
       <!-- 头部 -->
       <el-header>
         <el-row>
-          <el-col :span="21">
+          <el-col :span="1">
+            <div class="logo">
+              <img src="../assets/imgs/logo.png" alt="#" style="width:40px;height:30px" />
+            </div>
+          </el-col>
+          <el-col :span="20">
             <div>广告运营管理端</div>
           </el-col>
           <el-col :span="3">
@@ -105,8 +110,10 @@ export default {
     background-color: #545c64;
     border-bottom: 1px solid #ccc;
     color: #fff;
-    height: 60px !important;
     line-height: 60px;
+    .logo {
+      padding-top: 8px;
+    }
 
     .user {
       font-size: 14px;
