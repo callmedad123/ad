@@ -1,7 +1,7 @@
 [   
     {
       "path": "/index/0",
-      "icon": "el-icon-map-location",
+      "icon": "el-icon-location",
       "name": "区域管理",
       "children": [
         { "path": "/home/areamanage", "name": "区域管理"}
@@ -39,7 +39,7 @@
      
       {
         "path": "/index/4",
-        "icon": "el-icon-s-shop",
+        "icon": "el-icon-s-platform",
         "name": "广告管理",
         "children": [
           {"path":"/home/admanage","name":"广告管理"},

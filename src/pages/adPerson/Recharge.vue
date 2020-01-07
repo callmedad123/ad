@@ -107,7 +107,7 @@ export default {
   }
   .pages {
     margin-top: 40px;
-    text-align: right;
+    text-align: center;
   }
   .el-date-editor--datetimerange.el-input,
   .el-date-editor--datetimerange.el-input__inner {

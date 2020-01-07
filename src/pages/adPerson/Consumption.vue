@@ -13,8 +13,8 @@
       </el-col>
       <el-col :span="17">
         <div>
-          <el-input placeholder="请输入内容" v-model="input" clearable></el-input>
-           <el-select v-model="value" clearable placeholder="消费方式">
+          <el-input placeholder="请输入内容" v-model="input" clearable size="small"></el-input>
+           <el-select v-model="value" clearable placeholder="消费方式" size="small">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -147,7 +147,7 @@ export default {
   }
   .pages {
     margin-top: 40px;
-    text-align: right;
+    text-align: center;
   }
   .el-date-editor--datetimerange.el-input,
   .el-date-editor--datetimerange.el-input__inner {

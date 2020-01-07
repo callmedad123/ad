@@ -8,7 +8,7 @@
       </el-col>
       <el-col :span="20">
         <div>
-          <el-select v-model="value1" filterable placeholder="全部区域">
+          <el-select v-model="value1" filterable placeholder="全部区域" size="small">
             <el-option
               v-for="item in option1"
               :key="item.value"
@@ -16,7 +16,7 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <el-select v-model="value2" filterable placeholder="全部门禁">
+          <el-select v-model="value2" filterable placeholder="全部门禁" size="small">
             <el-option
               v-for="item in option2"
               :key="item.value"
@@ -24,8 +24,8 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <el-input placeholder="输入广告名称" v-model="input1" clearable></el-input>
-          <el-input placeholder="输入广告编码" v-model="input2" clearable></el-input>
+          <el-input placeholder="输入广告名称" v-model="input1" clearable size="small"></el-input>
+          <el-input placeholder="输入广告编码" v-model="input2" clearable size="small"></el-input>
         </div>
       </el-col>
     </el-row>
@@ -197,7 +197,7 @@ export default {
       margin: 20px 0;
   }
   .pages {
-    text-align: right;
+    text-align: center;
   }
 }
 </style>

@@ -6,11 +6,18 @@
         <el-row>
           <el-col :span="1">
             <div class="logo">
-              <img src="../assets/imgs/logo.png" alt="#" style="width:40px;height:30px" />
+              <img src="../assets/imgs/logo1.png" alt="#" />
             </div>
           </el-col>
-          <el-col :span="20">
-            <div>广告运营管理端</div>
+          <el-col :span="3">
+            <div style="font-weight:bold;font-size:18px;">广告运营管理端</div>
+          </el-col>
+          <el-col :span="2"  class="text">
+           <span>您所在的位置 <i class="el-icon-s-home"></i>：</span> 
+           
+          </el-col>
+          <el-col :span="15">
+            <Breadcrumb/>
           </el-col>
           <el-col :span="3">
             <div class="user">
@@ -44,7 +51,7 @@
           >
             <el-submenu v-for="(item,key) in menulist" :index="item.path" :key="key">
               <template slot="title">
-                <i :class="item.icon"></i>
+                <i :class="item.icon" style="color:#fff"></i>
                 <span>{{item.name}}</span>
               </template>
               <el-menu-item-group
@@ -65,10 +72,6 @@
         </el-aside>
         <!-- 右边内容 -->
         <el-main>
-          <div class="home">
-            <i class="el-icon-s-home"></i>
-            <router-link to="/home/todo" class="todo">首页</router-link>
-          </div>
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -78,7 +81,11 @@
 
 <script>
 import tree from "../json/tree.json";
+import Breadcrumb from '@/components/Breadcrumb'
 export default {
+  components:{
+  Breadcrumb,
+  },
   data() {
     return {
       menulist: []
@@ -107,14 +114,23 @@ export default {
 .box {
   height: 100%;
   .el-header {
-    background-color: #545c64;
-    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    padding: 0;
     color: #fff;
     line-height: 60px;
     .logo {
-      padding-top: 8px;
+      width: 220px;
+      background: #1ab394;
+      img{
+        margin: 18px 0 0 10px;
+        width: 40px;
+        height: 20px;
+      }
     }
-
+    .text{
+      color: #9a9a9a;
+      font-size: 14px;
+    }
     .user {
       font-size: 14px;
       .username {
@@ -128,12 +144,10 @@ export default {
   .home {
     height: 30px;
     line-height: 30px;
-
-    .todo {
-      color: #000;
-      text-decoration: none;
-    }
   }
+}
+.box .el-header .user .username .el-dropdown-link{
+  color: #9a9a9a;
 }
 
 .el-container {
@@ -147,6 +161,7 @@ export default {
   border: none;
 }
 .el-main {
-  padding: 0 20px 20px;
+  padding: 20px  20px;
+  background: #e9e9e9;
 }
 </style>

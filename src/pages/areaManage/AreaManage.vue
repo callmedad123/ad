@@ -8,7 +8,7 @@
       </el-col>
       <el-col :span="6">
         <div>
-          <el-input placeholder="请输入内容" v-model="input1" clearable></el-input>
+          <el-input placeholder="请输入内容" v-model="input1" clearable size="small"></el-input>
           <el-button type="primary" size="small">搜索</el-button>
           <el-button type="primary" size="small">同步</el-button>
         </div>
@@ -111,7 +111,7 @@ export default {
   }
   .pages {
     margin-top: 40px;
-    text-align: right;
+    text-align: center;
   }
   
 }

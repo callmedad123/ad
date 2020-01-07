@@ -197,7 +197,7 @@ export default {
   }
   .pages{
       margin-top:40px;
-      text-align: right;
+      text-align: center;
   }
 }
 </style>

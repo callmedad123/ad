@@ -27,72 +27,80 @@ const routes = [{
       {
         path: '/home/areamanage', //区域管理
         name: 'areamanage',
-        component: () => import('../pages/areaManage/AreaManage.vue')
+        component: () => import('../pages/areaManage/AreaManage.vue'),
+        meta:{title:'区域管理'}
       },
       {
         path: '/home/machinemanage', //门禁机管理
         name: 'machinemanage',
-        component: () => import('../pages/areaManage/MachineManage.vue')
+        component: () => import('../pages/areaManage/MachineManage.vue'),
+        meta:{title:'区域管理/门禁机管理'}
       },
       /* 业务统计 */
       {
         path: '/home/statistical', //投放统计
         name: 'intromsg',
-        component: () => import('../pages/business/Statistical.vue')
+        component: () => import('../pages/business/Statistical.vue'),
+        meta:{title:'投放统计'}
       },
       {
         path: '/home/record', //投放记录
         name: 'Record',
-        component: () => import('../pages/business/Record.vue')
+        component: () => import('../pages/business/Record.vue'),
+        meta:{title:'投放记录'}
       },
       {
         path: '/home/dayrecord', //查看详情
         name: 'dayrecord',
-        component: () => import('../pages/business/DayRecord.vue')
+        component: () => import('../pages/business/DayRecord.vue'),
+        meta:{title:'投放统计/查看详情'}
       },
       /*广告主管理 */
       {
         path: '/home/personintro', //基本信息
         name: 'personintro',
-        component: () => import('../pages/adPerson/PersonIntro.vue')
+        component: () => import('../pages/adPerson/PersonIntro.vue'),
+        meta:{title:'广告主管理/基本信息'}
       },
-      {
-        path: '/home/personedit', //管理
-        name: 'personedit',
-        component: () => import('../pages/adPerson/Personedit.vue')
-      },
+     
       {
         path: '/home/newadd', //新增
         name: 'newadd',
-        component: () => import('../pages/adPerson/Newadd.vue')
+        component: () => import('../pages/adPerson/Newadd.vue'),
+        meta:{title:'广告主管理/新增'}
       },
       {
         path: '/home/recharge', //充值记录
         name: 'recharge',
-        component: () => import('../pages/adPerson/Recharge.vue')
+        component: () => import('../pages/adPerson/Recharge.vue'),
+        meta:{title:'基本信息/充值记录'}
       },
       {
         path: '/home/consumption', //消费记录
         name: 'consumption',
-        component: () => import('../pages/adPerson/Consumption.vue')
+        component: () => import('../pages/adPerson/Consumption.vue'),
+        meta:{title:'基本信息/消费记录'}
       },
       /* 广告投放计划*/
       {
         path: '/home/putmanage', //投放管理
         name: 'putmanage',
-        component: () => import('../pages/adPut/PutManage.vue')
+        component: () => import('../pages/adPut/PutManage.vue'),
+        meta:{title:'新增投放计划'}
       },
 
     
       {
         path: '/home/putplan', //投放计划
         name: 'putplan',
-        component: () => import('../pages/adPut/PutPlan.vue')
+        component: () => import('../pages/adPut/PutPlan.vue'),
+        meta:{title:'投放计划'}
       },
       {
         path: '/home/putrecord', //投放记录
         name: 'putrecord',
-        component: () => import('../pages/adPut/PutRecord.vue')
+        component: () => import('../pages/adPut/PutRecord.vue'),
+        meta:{title:'投放计划/投放记录'}
       },
 
 
@@ -100,59 +108,72 @@ const routes = [{
       {
         path: '/home/adcreate', //广告新增
         name: 'adcreate',
-        component: () => import('../pages/adManage/AdCreate.vue')
+        component: () => import('../pages/adManage/AdCreate.vue'),
+        meta:{title:'广告管理/新增'}
+
       },
       {
         path: '/home/admanage', //广告管理
         name: 'admanage',
-        component: () => import('../pages/adManage/AdManage.vue')
+        component: () => import('../pages/adManage/AdManage.vue'),
+        meta:{title:'广告管理'}
       },
       {
         path: '/home/adaudit', //广告审核
         name: 'adaudit',
-        component: () => import('../pages/adManage/AdAudit.vue')
+        component: () => import('../pages/adManage/AdAudit.vue'),
+        meta:{title:'广告审核'}
       },
       {
         path: '/home/adedit', //广告修改
         name: 'adedit',
-        component: () => import('../pages/adManage/AdEdit.vue')
+        component: () => import('../pages/adManage/AdEdit.vue'),
+        meta:{title:'广告管理/修改'}
       },
       {
         path: '/home/adwatch', //查看详情
         name: 'adwatch',
-        component: () => import('../pages/adManage/AdWatch.vue')
+        component: () => import('../pages/adManage/AdWatch.vue'),
+        meta:{title:'广告审核/查看详情'}
       },
       {
         path: '/home/operationrecords', //操作记录
         name: 'operationrecords',
-        component: () => import('../pages/adManage/OperationRecords.vue')
+        component: () => import('../pages/adManage/OperationRecords.vue'),
+        meta:{title:'广告管理/操作记录'}
       },
 
       /*系统管理 */
       {
         path: '/home/useradd', //用户新增
         name: 'useradd',
-        component: () => import('../pages/system/UserAdd.vue')
+        component: () => import('../pages/system/UserAdd.vue'),
+        meta:{title:'用户管理/新增'}
+
       },
       {
         path: '/home/usermanage', //用户管理
         name: 'usermanage',
-        component: () => import('../pages/system/UserManage.vue')
+        component: () => import('../pages/system/UserManage.vue'),
+        meta:{title:'用户管理'}
       },
       {
         path: '/home/pwdchange', //密码修改
         name: 'pwdchange',
-        component: () => import('../pages/system/PwdChange.vue')
+        component: () => import('../pages/system/PwdChange.vue'),
+        meta:{title:'密码修改'}
       },
       {
         path: '/home/rolemanage', //角色管理
         name: 'rolemanage',
-        component: () => import('../pages/system/RoleManage.vue')
+        component: () => import('../pages/system/RoleManage.vue'),
+        meta:{title:'角色管理'}
       },
       {
         path: '/home/roleadd', //角色新增
         name: 'roleadd',
-        component: () => import('../pages/system/RoleAdd.vue')
+        component: () => import('../pages/system/RoleAdd.vue'),
+        meta:{title:'角色管理/新增'}
       },
 
 

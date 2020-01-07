@@ -11,9 +11,9 @@
       </el-col>
       <el-col :span="10">
         <div>
-          <el-input placeholder="请输入用户名" v-model="input1" clearable></el-input>
+          <el-input placeholder="请输入用户名" v-model="input1" clearable size="small"></el-input>
 
-          <el-select v-model="value" clearable placeholder="状态">
+          <el-select v-model="value" clearable placeholder="状态" size="small">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -133,7 +133,7 @@ export default {
   }
   .pages {
     margin-top: 40px;
-    text-align: right;
+    text-align: center;
   }
 }
 </style>

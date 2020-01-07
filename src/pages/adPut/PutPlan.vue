@@ -8,9 +8,9 @@
       </el-col>
       <el-col :span="20">
         <div>
-          <el-input placeholder="请输入内容" v-model="input1" clearable></el-input>
-          <el-input placeholder="请输入内容" v-model="input2" clearable></el-input>
-          <el-select v-model="value" filterable placeholder="全部状态">
+          <el-input placeholder="请输入内容" v-model="input1" clearable size="small"></el-input>
+          <el-input placeholder="请输入内容" v-model="input2" clearable size="small"></el-input>
+          <el-select v-model="value" filterable placeholder="全部状态" size="small">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -279,7 +279,7 @@ export default {
   }
   .pages {
     margin-top: 40px;
-    text-align: right;
+    text-align: center;
   }
 }
 </style>
