@@ -1,11 +1,13 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/home/admanage' }">广告管理</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+        <el-breadcrumb-item :to="{ path: '/ad/admanage' }">
+          <i class="el-icon-back"></i>
+        </el-breadcrumb-item>
         <el-breadcrumb-item>修改</el-breadcrumb-item>
       </el-breadcrumb>
-     
+<!-- 广告修改表单 -->
       <el-form ref="form" :model="adContent" label-width="80px">
         <el-form-item label="内容">
           <img
@@ -61,11 +63,10 @@ export default {
 .el-breadcrumb {
   font-size: 16px;
 }
-.el-form{
+.el-form {
   margin-top: 40px;
   .el-input {
-  width: 30%;
+    width: 30%;
+  }
 }
-}
-
 </style>

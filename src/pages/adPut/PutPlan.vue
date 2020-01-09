@@ -1,12 +1,12 @@
 <template>
   <el-card>
-    <el-row>
+    <el-row> 
       <el-col :span="4">
         <div class="title">
-          <span>1</span>广告投放计划
+          <span>投放计划</span>
         </div>
       </el-col>
-      <el-col :span="20">
+      <el-col :span="20" style="text-align:right">
         <div>
           <el-input placeholder="请输入内容" v-model="input1" clearable size="small"></el-input>
           <el-input placeholder="请输入内容" v-model="input2" clearable size="small"></el-input>
@@ -29,7 +29,7 @@
             align="right"
             size="small"
           ></el-date-picker>
-          <el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>
+          <el-button class="btnBg" icon="el-icon-search" size="small">搜索</el-button>
         </div>
       </el-col>
     </el-row>
@@ -50,8 +50,8 @@
       <el-table-column prop="time" label="创建时间" width="180"></el-table-column>
       <el-table-column prop="machineNum" label="投放门禁机数量" width="120"></el-table-column>
       <el-table-column prop="counts" label="已投放次数" width="100"></el-table-column>
-      <el-table-column prop="downStatus" label="下发状态"></el-table-column>
-      <el-table-column fixed="right" label="操作" width="140">
+      <el-table-column prop="downStatus" label="下发状态" width="100"></el-table-column>
+      <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button
             @click="handleClick(scope.row)"
@@ -234,7 +234,7 @@ export default {
       console.log(`当前页: ${val}`);
     },
     clickRecord() {
-      this.$router.history.push("/home/putrecord");
+      this.$router.history.push("/adput/putrecord");
     },
     viewDownStatus(row, column) {//单元格点击
       if (column.label =="下发状态") {
@@ -261,9 +261,7 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-input,

@@ -1,12 +1,12 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="4">
+      <el-col :span="2">
         <div class="title">
-          <span>1</span>投放统计
+          <span>投放统计</span>
         </div>
       </el-col>
-      <el-col :span="20">
+      <el-col :span="22" style="text-align:right">
         <div>
           <el-select v-model="value1" filterable placeholder="全部区域" size="small">
             <el-option
@@ -32,9 +32,9 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <el-button type="primary" size="small">上月</el-button>
-          <el-button type="primary" size="small">本月</el-button>
-          <el-button type="primary" size="small">自定义</el-button>
+          <el-button class="btnBg" size="small">上月</el-button>
+          <el-button class="btnBg" size="small">本月</el-button>
+          <el-button class="btnBg" size="small">自定义</el-button>
           <el-date-picker
             v-model="time"
             type="datetimerange"
@@ -58,7 +58,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- 翻页 -->
+    <!-- 分页 -->
     <div class="pages">
       <el-pagination
         background
@@ -83,7 +83,7 @@ export default {
       console.log(`当前页: ${val}`);
     },
     handleClick(){
-      this.$router.push({path:'/home/dayrecord'})
+      this.$router.push({path:'/business/dayrecord'})
     }
   },
   data() {
@@ -169,9 +169,7 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-date-editor--datetimerange.el-input,

@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="4">
         <div>
-          <span class="title">1</span>充值记录
+          <span class="title">充值记录</span>
         </div>
       </el-col>
       <el-col :span="10">
@@ -11,7 +11,7 @@
           <span>xx</span>广告主的充值记录
         </div>
       </el-col>
-      <el-col :span="10">
+      <el-col :span="10" style="text-align:right">
         <div>
           <span>充值时间</span>
           <el-date-picker
@@ -22,8 +22,8 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
           ></el-date-picker>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small" @click="clickAdd">导出</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" @click="clickAdd">导出</el-button>
         </div>
       </el-col>
     </el-row>
@@ -36,7 +36,7 @@
      
     </el-table>
 
-    <!-- 翻页 -->
+    <!-- 分页 -->
     <div class="pages">
       <el-pagination
         background
@@ -100,9 +100,7 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     .title {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .pages {

@@ -1,7 +1,9 @@
 <template>
   <el-card>
     <h2>欢迎登录xxxxxxx</h2>
+    <!-- 选项卡 -->
     <el-tabs type="border-card">
+      <!-- 待办事项 -->
       <el-tab-pane label="代办事项">
         <el-table :data="tableData" border style="width: 100%">
           <el-table-column prop="num" label="序号" width="100"></el-table-column>
@@ -14,25 +16,29 @@
           <el-table-column prop="type" label="待办类型"></el-table-column>
           <el-table-column prop="date" label="提交时间"></el-table-column>
         </el-table>
+        <!-- 翻页 -->
         <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page.sync="currentPage"
-      :page-size="4"
-      layout="total, prev, pager, next"
-      :total="12">
-    </el-pagination>
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="4"
+          layout="total, prev, pager, next"
+          :total="12"
+        ></el-pagination>
       </el-tab-pane>
+      <!-- 已提交事项 -->
       <el-tab-pane label="已提交事项">已提交事项</el-tab-pane>
+      <!-- 已办事项 -->
       <el-tab-pane label="已办事项">已办事项</el-tab-pane>
     </el-tabs>
+    <!-- 刷新按钮 -->
     <el-button icon="el-icon-refresh-right" type="text" class="refresh" @click="clickRefresh"></el-button>
   </el-card>
 </template>
 
 <script>
 export default {
-  inject:['reload'],
+  inject: ["reload"],
   methods: {
     handleClick(row) {
       console.log(row);
@@ -43,13 +49,13 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
-    clickRefresh(){
+    clickRefresh() {
       this.reload();
     }
   },
   data() {
     return {
-      currentPage:1,
+      currentPage: 1,
       tableData: [
         {
           date: "2016-05-02",
@@ -91,6 +97,5 @@ export default {
     top: 94px;
     right: 30px;
   }
-  
 }
 </style>

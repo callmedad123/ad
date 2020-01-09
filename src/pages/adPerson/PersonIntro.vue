@@ -3,16 +3,16 @@
     <el-card>
       <!-- 搜索栏 -->
       <el-row>
-        <el-col :span="18">
+        <el-col :span="6">
         <div class="title">
-          <span>1</span>基本信息
+          <span>基本信息</span>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="18" style="text-align:right">
         <div class="rightTop">
           <el-input placeholder="请输入内容" v-model="search" clearable size="small"></el-input>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>
       </el-row>
@@ -116,21 +116,21 @@ export default {
       console.log(`当前页: ${val}`);
     },
     clickAdd() {
-      this.$router.history.push("/home/newadd");
+      this.$router.history.push("/adperson/newadd");
     },
     clickPay(val) {
       this.form = val;
       this.dialogFormVisible = true;
     },
     handleEdit(index, row) {
-      this.$router.push({path:'/home/newadd', query: { id:index,tableData:row }})
+      this.$router.push({path:'/adperson/newadd', query: { id:index,tableData:row }})
       
     },
     clickRecharge() {
-      this.$router.history.push("/home/recharge");
+      this.$router.history.push("/adperson/recharge");
     },
     clickConsumption() {
-      this.$router.history.push("/home/consumption");
+      this.$router.history.push("/adperson/consumption");
     },
     
     clickSure() {
@@ -171,13 +171,11 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-input {
-    width: 48%;
+    width: 16%;
     margin: 0 10px;
   }
 }

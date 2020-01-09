@@ -1,16 +1,16 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="18">
+      <el-col :span="6">
         <div class="title">
-          <span>1</span>用户管理
+          <span>用户管理</span>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="18" style="text-align:right">
         <div class="rightTop">
           <el-input placeholder="请输入用户名" v-model="search" clearable size="small"></el-input>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small" @click="clickAdd">新增</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>
     </el-row>
@@ -71,7 +71,7 @@ export default {
   methods: {
     handleClick(index,val){
         this.$router.push({
-          path:"/home/useradd",
+          path:"/system/useradd",
           query:{
             id:index,
             tableData:val
@@ -86,10 +86,10 @@ export default {
       console.log(`当前页: ${val}`);
     },
     clickChange() {
-      this.$router.push({path:"/home/pwdchange"});
+      this.$router.push({path:"/system/pwdchange"});
     },
     clickAdd() {
-      this.$router.history.push("/home/useradd");
+      this.$router.history.push("/system/useradd");
     },
     clickAuthorization() {
       this.dialogFormVisible1 = true;
@@ -151,14 +151,12 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .rightTop{
     .el-input {
-    width: 48%;
+    width: 16%;
     margin: 0 10px;
   }
   }

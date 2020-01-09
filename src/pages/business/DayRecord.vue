@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-  <el-breadcrumb-item :to="{ path: '/home/statistical' }">投放统计</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+  <el-breadcrumb-item :to="{ path: '/business/statistical' }"><i class="el-icon-back"></i></el-breadcrumb-item>
   <el-breadcrumb-item>xx日投放量</el-breadcrumb-item>
   
 </el-breadcrumb>

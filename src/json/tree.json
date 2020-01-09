@@ -1,10 +1,10 @@
 [   
     {
       "path": "/index/0",
-      "icon": "el-icon-location",
+      "icon": "el-icon-location-outline",
       "name": "区域管理",
       "children": [
-        { "path": "/home/areamanage", "name": "区域管理"}
+        { "path": "/area/areamanage", "name": "区域管理"}
       ]
     },
     {
@@ -21,8 +21,8 @@
       "icon": "el-icon-s-order",
       "name": "广告投放计划",
       "children": [
-        { "path": "/home/putplan", "name": "投放计划" },
-        { "path": "/home/putmanage", "name": "新增投放计划" }
+        { "path": "/adput/putplan", "name": "投放计划" },
+        { "path": "/adput/putmanage", "name": "新增投放计划" }
         
       ]
     },
@@ -31,7 +31,7 @@
         "icon": "el-icon-s-custom",
         "name": "广告主管理",
         "children": [
-          { "path": "/home/personintro", "name": "基本信息" }
+          { "path": "/adperson/personintro", "name": "基本信息" }
          
           
         ]
@@ -42,9 +42,9 @@
         "icon": "el-icon-s-platform",
         "name": "广告管理",
         "children": [
-          {"path":"/home/admanage","name":"广告管理"},
+          {"path":"/ad/admanage","name":"广告管理"},
           
-          { "path": "/home/adaudit", "name": "广告审核" }
+          { "path": "/ad/adaudit", "name": "广告审核" }
         ]
       },
       {
@@ -52,8 +52,8 @@
         "icon": "el-icon-s-data",
         "name": "业务统计",
         "children": [
-          { "path": "/home/statistical", "name": "投放统计" },
-          { "path": "/home/record", "name": "投放记录" }
+          { "path": "/business/statistical", "name": "投放统计" },
+          { "path": "/business/record", "name": "投放记录" }
           
         ]
       },
@@ -63,8 +63,8 @@
         "icon": "el-icon-setting",
         "name": "系统管理",
         "children": [
-          { "path": "/home/usermanage", "name": "用户管理" },
-          { "path": "/home/rolemanage", "name": "角色管理"}
+          { "path": "/system/usermanage", "name": "用户管理" },
+          { "path": "/system/rolemanage", "name": "角色管理"}
         ]
       }
 

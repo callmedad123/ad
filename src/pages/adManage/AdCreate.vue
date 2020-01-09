@@ -1,8 +1,10 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/home/admanage' }">广告管理</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+        <el-breadcrumb-item :to="{ path: '/ad/admanage' }">
+          <i class="el-icon-back"></i>
+        </el-breadcrumb-item>
         <el-breadcrumb-item>新增</el-breadcrumb-item>
       </el-breadcrumb>
 

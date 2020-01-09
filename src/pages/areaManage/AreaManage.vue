@@ -1,16 +1,16 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="18">
+      <el-col :span="4">
         <div class="title">
-          <span>1</span>区域管理
+          <span>区域管理</span>
         </div>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="20" style="text-align:right">
         <div>
           <el-input placeholder="请输入内容" v-model="input1" clearable size="small"></el-input>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small">同步</el-button>
+          <el-button size="small" class="btnBg">搜索</el-button>
+          <el-button size="small" class="btnBg">同步</el-button>
         </div>
       </el-col>
     </el-row>
@@ -56,7 +56,7 @@ export default {
       console.log(`当前页: ${val}`);
     },
     handleClick(){
-        this.$router.history.push('/home/machinemanage')
+        this.$router.history.push('/area/machinemanage')
     }
    
    
@@ -100,19 +100,18 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-input {
-    width: 48%;
+    width: 16%;
     margin: 0 10px;
   }
   .pages {
     margin-top: 40px;
     text-align: center;
   }
+  
   
 }
 </style>

@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="4">
         <div class="title">
-          <span>1</span>投放记录
+          <span>投放记录</span>
         </div>
       </el-col>
       <el-col :span="20">
@@ -41,8 +41,8 @@
             end-placeholder="结束日期"
             size="small"
           ></el-date-picker>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small">导出</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small">导出</el-button>
           
   </el-col>
 </el-row>
@@ -60,7 +60,7 @@
       
     </el-table>
 
-    <!-- 翻页 -->
+    <!-- 分页 -->
     <div class="pages">
       <el-pagination
         background
@@ -178,9 +178,7 @@ export default {
     line-height: 40px;
     margin-bottom: 20px;
     span {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-date-editor--datetimerange.el-input,

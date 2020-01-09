@@ -1,11 +1,14 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/home/adaudit' }">广告审核</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+        <el-breadcrumb-item :to="{ path: '/ad/adaudit' }">
+          <i class="el-icon-back"></i>
+        </el-breadcrumb-item>
         <el-breadcrumb-item>查看详情</el-breadcrumb-item>
       </el-breadcrumb>
 
+  <!-- 查看详情表单 -->
       <el-form ref="form" :model="viewContent" label-width="100px">
         <el-row>
           <!-- 左边内容 -->
@@ -73,11 +76,10 @@ export default {
 .el-breadcrumb {
   font-size: 16px;
 }
-.el-form{
+.el-form {
   margin-top: 40px;
   .el-input {
-  width: 54%;
+    width: 54%;
+  }
 }
-}
-
 </style>

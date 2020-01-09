@@ -1,15 +1,19 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="14">
+      <el-col :span="6">
         <div class="title">
-          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/home/areamanage' }">区域管理</el-breadcrumb-item>
-            <el-breadcrumb-item>门禁机管理</el-breadcrumb-item>
+          <el-breadcrumb separator-class=" ">
+            <el-breadcrumb-item :to="{ path: '/area/areamanage' }"><i class="el-icon-back"></i></el-breadcrumb-item>
+            <el-breadcrumb-item>
+              <span>
+                门禁机管理
+              </span>
+            </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
       </el-col>
-      <el-col :span="10">
+      <el-col :span="18" style="text-align:right">
         <div>
           <el-input placeholder="请输入用户名" v-model="input1" clearable size="small"></el-input>
 
@@ -21,8 +25,8 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small">同步</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small">同步</el-button>
         </div>
       </el-col>
     </el-row>
@@ -124,11 +128,12 @@ export default {
     padding-top: 10px;
     .el-breadcrumb {
       font-size: 16px;
+      
     }
   }
  
   .el-select,.el-input {
-    width: 30%;
+    width: 18%;
     margin: 0 10px;
   }
   .pages {

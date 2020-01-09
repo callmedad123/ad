@@ -4,22 +4,30 @@
       <!-- 头部 -->
       <el-header>
         <el-row>
-          <el-col :span="1">
+          <!-- logo -->
+          <el-col style="width:220px">
             <div class="logo">
               <img src="../assets/imgs/logo1.png" alt="#" />
+              <span style="font-weight:bold;font-size:18px;">广告运营管理端</span>
             </div>
           </el-col>
-          <el-col :span="3">
-            <div style="font-weight:bold;font-size:18px;">广告运营管理端</div>
+          <!-- 面包屑 -->
+          <el-col  class="text">
+            <span>
+              <i class="el-icon-s-home"></i>
+              您所在的位置 ：
+            </span>
           </el-col>
-          <el-col :span="2"  class="text">
-           <span>您所在的位置 <i class="el-icon-s-home"></i>：</span> 
-           
+          <el-col :span="14">
+            <Breadcrumb />
           </el-col>
-          <el-col :span="15">
-            <Breadcrumb/>
+          <!-- 消息提示 -->
+          <el-col :span="1">
+            <el-badge is-dot class="badge">
+              <i class="el-icon-chat-dot-square"></i>
+            </el-badge>
           </el-col>
-          <el-col :span="3">
+          <!-- 用户 -->
             <div class="user">
               <el-dropdown trigger="click" class="username" @command="clickPwd">
                 <span class="el-dropdown-link">
@@ -29,7 +37,7 @@
                 </span>
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item icon="el-icon-plus" command="a">修改密码</el-dropdown-item>
-                  <el-dropdown-item icon="el-icon-error" command="b">退出</el-dropdown-item>
+                  <el-dropdown-item icon="el-icon-switch-button" command="b">退出</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </div>
@@ -81,10 +89,10 @@
 
 <script>
 import tree from "../json/tree.json";
-import Breadcrumb from '@/components/Breadcrumb'
+import Breadcrumb from "@/components/Breadcrumb";
 export default {
-  components:{
-  Breadcrumb,
+  components: {
+    Breadcrumb
   },
   data() {
     return {
@@ -109,6 +117,16 @@ export default {
   }
 };
 </script>
+<style lang="less">
+.el-badge__content.is-fixed.is-dot {
+  top: 18px;
+  right: 7px;
+}
+.btnBg{
+    background: #1ab394!important;
+    color: #fff !important;
+  }
+</style>
 
 <style lang="less" scoped>
 .box {
@@ -120,24 +138,37 @@ export default {
     line-height: 60px;
     .logo {
       width: 220px;
+      height: 60px;
       background: #1ab394;
-      img{
-        margin: 18px 0 0 10px;
+      img {
+        margin: 0 5px 0  10px;
         width: 40px;
         height: 20px;
       }
     }
-    .text{
+    .text {
+      width: 120px;
       color: #9a9a9a;
       font-size: 14px;
+      margin-left:20px;
     }
     .user {
+     text-align: right;
       font-size: 14px;
       .username {
-        margin-left: 20px;
+        margin:0 20px;
         .el-dropdown-link {
           color: #fff;
         }
+      }
+    }
+    .badge {
+      height: 60px;
+      margin-left: 60px;
+      i {
+        color: #9a9a9a;
+        font-size: 24px;
+        margin-top: 15px;
       }
     }
   }
@@ -146,7 +177,7 @@ export default {
     line-height: 30px;
   }
 }
-.box .el-header .user .username .el-dropdown-link{
+.box .el-header .user .username .el-dropdown-link {
   color: #9a9a9a;
 }
 
@@ -161,7 +192,7 @@ export default {
   border: none;
 }
 .el-main {
-  padding: 20px  20px;
+  padding: 20px 20px;
   background: #e9e9e9;
 }
 </style>

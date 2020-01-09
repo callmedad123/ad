@@ -2,14 +2,15 @@
   <div class="box">
     <div class="content">
       <div class="title">
-        <img src="../assets/imgs/logo.png" alt="#" />
+        <img src="../assets/imgs/logo.png" alt="#"  class="logo"/>
+        <img src="../assets/imgs/title.png" alt="#" class="name">
       </div>
 
       <div class="text">
         <p>管理账户登录</p>
         <span>请输入您的管理账号和管理密码</span>
       </div>
-
+  <!-- 登录表单 -->
       <el-form
         :model="loginForm"
         status-icon
@@ -38,14 +39,14 @@
         </el-form-item>
 
         <el-form-item>
-          <el-checkbox v-model="checked">记住密码</el-checkbox>
+          <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
         </el-form-item>
 
         <el-form-item>
           <el-button @click="submitForm('loginForm')">登录</el-button>
         </el-form-item>
       </el-form>
-
+<!-- 版权 -->
       <p class="copy">
         Copyright &copy; 2020广告运营管理端 V1.0.0
       </p>
@@ -60,7 +61,7 @@ export default {
   },
   data() {
     return {
-      checked:false,
+      checked:true,
       loginForm: {
         //登录表单
         acc: "",
@@ -111,10 +112,26 @@ export default {
 };
 </script>
 <style lang="less">
+@rememberColor:#1ab394;
 .login input.el-input__inner {
   width: 90%;
   border-radius: 20px;
   background: #e9f8f5;
+}
+.remember .el-checkbox__input.is-checked+.el-checkbox__label {
+    color: @rememberColor;
+}
+.remember .el-checkbox__inner::after{
+      border: 1px solid @rememberColor;
+    border-left: 0;
+    border-top: 0;
+}
+.remember .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: #fff;
+    border-color: @rememberColor;
+}
+.remember .el-checkbox__input.is-focus .el-checkbox__inner,.remember .el-checkbox__inner:hover{
+  border-color: @rememberColor;
 }
 </style>
 
@@ -124,6 +141,7 @@ export default {
 .box {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-image: url("../assets/imgs/bg-2.png"),
     url("../assets/imgs/bg-3.png"), url("../assets/imgs/bg-1.png");
   background-size: 100%, 40%, 50% 100%;
@@ -134,15 +152,20 @@ export default {
     width: 30%;
     padding: 8%;
     .title {
-      img {
+      .logo {
         width: 60px;
+      }
+      .name{
+        height: 30px;
+        margin-left: 10px;
       }
     }
     .text {
       margin: 40px 0;
       p {
-        font-size: 30px;
+        font-size: 40px;
         margin: 4px 0;
+        
       }
       span {
         font-size: @fz;
@@ -161,6 +184,8 @@ export default {
       font-size: @fz;
       color: @color;
     }
+    
+
   }
 }
 </style>

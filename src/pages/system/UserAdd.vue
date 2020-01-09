@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/home/usermanage' }">用户管理</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+        <el-breadcrumb-item :to="{ path: '/system/usermanage' }"><i class="el-icon-back"></i></el-breadcrumb-item>
         <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
       </el-breadcrumb>
       <el-form
@@ -35,7 +35,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('addForm')">保存</el-button>
+          <el-button class="btnBg" @click="submitForm('addForm')">保存</el-button>
           <el-button @click="resetForm('addForm')">重置</el-button>
         </el-form-item>
       </el-form>

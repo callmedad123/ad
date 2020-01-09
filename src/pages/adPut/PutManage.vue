@@ -2,7 +2,7 @@
   <div>
     <el-card class="box-card">
       <div class="title">
-        <span>1</span>新增广告投放计划
+        <span>新增广告投放计划</span>
       </div>
       <el-divider></el-divider>
       <el-form :model="adForm" :rules="rules" ref="adForm" label-width="110px">
@@ -49,7 +49,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm('adForm')">保存</el-button>
+          <el-button class="btnBg" @click="submitForm('adForm')">保存</el-button>
           <el-button @click="resetForm('adForm')">取消</el-button>
         </el-form-item>
       </el-form>
@@ -133,9 +133,7 @@ export default {
   line-height: 40px;
   margin-bottom: 20px;
   span {
-    color: #ccc;
-    background: #ccc;
-    margin-right: 10px;
+    border-bottom: 3px solid #1ab394;
   }
 }
 .el-form{

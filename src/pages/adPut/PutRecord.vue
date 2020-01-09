@@ -2,8 +2,8 @@
   <el-card>
     <el-row class="title">
       <el-col :span="6">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/home/putplan' }">广告投放计划</el-breadcrumb-item>
+        <el-breadcrumb separator-class=" ">
+          <el-breadcrumb-item :to="{ path: '/adput/putplan' }"><i class="el-icon-back"></i></el-breadcrumb-item>
           <el-breadcrumb-item>投放记录</el-breadcrumb-item>
         </el-breadcrumb>
       </el-col>
@@ -16,10 +16,10 @@
     </el-row>
 
     <div class="search">
-      <el-select v-model="area" filterable placeholder="全部区域">
+      <el-select v-model="area" filterable placeholder="全部区域" size="small">
         <el-option v-for="item in option" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
-      <el-select v-model="machine" filterable placeholder="全部门禁">
+      <el-select v-model="machine" filterable placeholder="全部门禁" size="small">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -39,8 +39,8 @@
         size="small"
         style="width:30%"
       ></el-date-picker>
-      <el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>
-      <el-button type="primary" size="small">导出</el-button>
+      <el-button class="btnBg" icon="el-icon-search" size="small">搜索</el-button>
+      <el-button class="btnBg" size="small">导出</el-button>
     </div>
 
     <el-table :data="tableData" border style="width: 100%">
@@ -182,10 +182,11 @@ export default {
     }
   }
   .search {
-    margin: 20px 0 20px 35%;
+    text-align: right;
+    margin: 20px 0 20px 0;
     .el-input,
     .el-select {
-      width: 15%;
+      width: 12%;
       margin-left: 10px;
     }
     .time {

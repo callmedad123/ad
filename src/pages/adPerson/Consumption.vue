@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="3">
         <div>
-          <span class="title">1</span>消费记录
+          <span class="title">消费记录</span>
         </div>
       </el-col>
       <el-col :span="4">
@@ -11,7 +11,7 @@
           <span>xx</span>广告主的消费记录
         </div>
       </el-col>
-      <el-col :span="17">
+      <el-col :span="17" style="text-align:right">
         <div>
           <el-input placeholder="请输入内容" v-model="input" clearable size="small"></el-input>
            <el-select v-model="value" clearable placeholder="消费方式" size="small">
@@ -31,8 +31,8 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
           ></el-date-picker>
-          <el-button type="primary" size="small">搜索</el-button>
-          <el-button type="primary" size="small">导出</el-button>
+          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small">导出</el-button>
         </div>
       </el-col>
     </el-row>
@@ -49,7 +49,7 @@
      
     </el-table>
 
-    <!-- 翻页 -->
+    <!-- 分页 -->
     <div class="pages">
       <el-pagination
         background
@@ -136,9 +136,7 @@ export default {
     line-height: 40px;
     margin-bottom: 40px;
     .title {
-      color: #ccc;
-      background: #ccc;
-      margin-right: 10px;
+      border-bottom: 3px solid #1ab394;
     }
   }
   .el-input,.el-select{

@@ -45,9 +45,13 @@ body,html{
   margin: 0;
   padding: 0;
 }
-.el-table th,.el-table td{
+.el-table th,.el-table td{//表格内容居中
     text-align: center!important;
 }    
+.pages .el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #1ab394;
+    color: #FFF;
+}
 
 
 </style>

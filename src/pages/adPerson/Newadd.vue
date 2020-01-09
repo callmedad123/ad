@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-card>
-      <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/home/personintro' }">基本信息</el-breadcrumb-item>
+      <el-breadcrumb separator-class=" ">
+        <el-breadcrumb-item :to="{ path: '/adperson/personintro' }"><i class="el-icon-back"></i></el-breadcrumb-item>
         <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
       </el-breadcrumb>
 
