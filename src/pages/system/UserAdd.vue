@@ -2,7 +2,9 @@
   <div>
     <el-card>
       <el-breadcrumb separator-class=" ">
-        <el-breadcrumb-item :to="{ path: '/system/usermanage' }"><i class="el-icon-back"></i></el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/system/usermanage' }">
+          <i class="el-icon-back"></i>
+        </el-breadcrumb-item>
         <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
       </el-breadcrumb>
       <el-form
@@ -20,7 +22,7 @@
           <el-input type="password" v-model="addForm.pwd" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="checkPwd" v-if="show">
-          <el-input type="password" v-model="addForm.checkPwd" ></el-input>
+          <el-input type="password" v-model="addForm.checkPwd"></el-input>
         </el-form-item>
         <el-form-item label="姓名" prop="name">
           <el-input type="text" v-model="addForm.name" autocomplete="off"></el-input>
@@ -29,13 +31,14 @@
           <el-input type="text" v-model="addForm.tel" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="用户类型" prop="region">
-          <el-select v-model="addForm.region" placeholder="请选择用户类型" :disabled='ban'>
+          <el-select v-model="addForm.region" placeholder="请选择用户类型" :disabled="ban">
             <el-option label="超级管理员" value="0"></el-option>
             <el-option label="管理员" value="1"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button class="btnBg" @click="submitForm('addForm')">保存</el-button>
+          <el-button class="btnBg" @click="submitForm('addForm')" v-if="show">提交</el-button>
+          <el-button class="btnBg" @click="saveForm" v-if="showSave">保存</el-button>
           <el-button @click="resetForm('addForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -46,12 +49,13 @@
 <script>
 export default {
   created() {
-    if(this.$route.query.id>=0){
-      this.starShow=true;
-      this.show=false;
-      this.ban=true;
-      this.tag='编辑'
-      this.addForm=this.$route.query.tableData
+    if (this.$route.query.id >= 0) {
+      this.starShow = true;
+      this.show = false;
+      this.ban = true;
+      this.tag = "编辑";
+      this.showSave = true;
+      this.addForm = this.$route.query.tableData;
     }
   },
   data() {
@@ -75,10 +79,11 @@ export default {
       }
     };
     return {
-      starShow:false,//输入框前*显示与隐藏
-      show:true,//输入框显示与隐藏
-      ban:false,//输入框禁用
-      tag:'用户新增',
+      starShow: false, //输入框前*显示与隐藏
+      show: true, //输入框提交按钮显示与隐藏
+      ban: false, //输入框禁用
+      showSave: false, //保存按钮显示与隐藏
+      tag: "用户新增",
       addForm: {
         pwd: "",
         checkPwd: "",

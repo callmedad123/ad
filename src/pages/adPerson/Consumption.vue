@@ -31,7 +31,7 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
           ></el-date-picker>
-          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" icon="el-icon-search">搜索</el-button>
           <el-button class="btnBg" size="small">导出</el-button>
         </div>
       </el-col>

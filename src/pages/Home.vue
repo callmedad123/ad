@@ -7,7 +7,7 @@
           <!-- logo -->
           <el-col style="width:220px">
             <div class="logo">
-              <img src="../assets/imgs/logo1.png" alt="#" />
+              <img src="@/assets/imgs/logo1.png" alt="#" />
               <span style="font-weight:bold;font-size:18px;">广告运营管理端</span>
             </div>
           </el-col>
@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import tree from "../json/tree.json";
+import tree from "@/json/tree.json";
 import Breadcrumb from "@/components/Breadcrumb";
 export default {
   components: {
@@ -105,7 +105,7 @@ export default {
   methods: {
     clickPwd(command) {
       if (command == "a") {
-        this.$router.history.push("/home/pwdchange");
+        this.$router.push({path:"/home/pwdchange"});
       } else {
         this.$router.push({ path: "/" });
         this.$message({

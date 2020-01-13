@@ -9,7 +9,7 @@
       <el-col :span="18" style="text-align:right">
         <div>
           <el-input placeholder="请输入用户名" v-model="input1" clearable size="small"></el-input>
-          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" icon="el-icon-search">搜索</el-button>
           <el-button class="btnBg" size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>

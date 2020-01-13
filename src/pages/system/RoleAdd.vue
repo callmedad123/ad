@@ -29,7 +29,8 @@
     </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button class="btnBg" @click="submitForm('addForm')">提交</el-button>
+          <el-button class="btnBg" @click="submitForm('addForm')" v-if="showSubmit">提交</el-button>
+          <el-button class="btnBg" @click="saveForm" v-if="showSave" >保存</el-button>
           <el-button @click="resetForm('addForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -44,6 +45,8 @@ export default {
       this.tag='编辑';
       this.ban=true;
       this.starShow=true;
+      this.showSubmit=false;
+      this.showSave=true;
       this.addForm=this.$route.query.tableData;
     }
   },
@@ -52,6 +55,8 @@ export default {
       ban:false,//输入框状态
       tag:"角色新增",
       starShow:false,//输入框前*显示与隐藏
+      showSubmit:true,//提交按钮显示与隐藏
+      showSave:false,//保存按钮显示与隐藏
       addForm: {
         roleName: "",
         mark: "",

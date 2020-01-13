@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../pages/Login.vue'
-import Home from '../pages/Home.vue'
+import Login from '@/pages/Login.vue'
+import Home from '@/pages/Home.vue'
 
 Vue.use(VueRouter)
 // 解决重复点击导航路由报错

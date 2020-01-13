@@ -2,7 +2,9 @@
   <div>
     <el-card>
       <el-breadcrumb separator-class=" ">
-        <el-breadcrumb-item :to="{ path: '/adperson/personintro' }"><i class="el-icon-back"></i></el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/adperson/personintro' }">
+          <i class="el-icon-back"></i>
+        </el-breadcrumb-item>
         <el-breadcrumb-item>{{tag}}</el-breadcrumb-item>
       </el-breadcrumb>
 
@@ -45,7 +47,7 @@ export default {
       show: false,
       ban: false,
       tag: "新增",
-      starShow:false,
+      starShow: false,
       ruleForm: {
         code: "",
         name: "",
@@ -99,21 +101,19 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    },
-  //   getUrlKey(name) {//获取地址栏参数
-	// 	return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
-	// }
+    }
+    //   getUrlKey(name) {//获取地址栏参数
+    // 	return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+    // }
   },
   created() {
-    
-    if (this.$route.query.id >=0) {
-      this.ban=true;
-      this.show=true;
-      
-      this.tag='编辑'
-      this.ruleForm=this.$route.query.tableData;
-      this.starShow=true;
-      
+    if (this.$route.query.id >= 0) {
+      this.ban = true;
+      this.show = true;
+
+      this.tag = "编辑";
+      this.ruleForm = this.$route.query.tableData;
+      this.starShow = true;
     }
   }
 };

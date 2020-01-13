@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Charts from "../../components/Charts";
+import Charts from "@/components/Charts";
 export default {
   data() {
     return {

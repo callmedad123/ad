@@ -2,8 +2,8 @@
   <div class="box">
     <div class="content">
       <div class="title">
-        <img src="../assets/imgs/logo.png" alt="#"  class="logo"/>
-        <img src="../assets/imgs/title.png" alt="#" class="name">
+        <img src="@/assets/imgs/logo.png" alt="#"  class="logo"/>
+        <img src="@/assets/imgs/title.png" alt="#" class="name">
       </div>
 
       <div class="text">

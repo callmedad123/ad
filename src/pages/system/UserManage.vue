@@ -9,13 +9,12 @@
       <el-col :span="18" style="text-align:right">
         <div class="rightTop">
           <el-input placeholder="请输入用户名" v-model="search" clearable size="small"></el-input>
-          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" icon="el-icon-search">搜索</el-button>
           <el-button class="btnBg" size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>
     </el-row>
-
-    <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border style="width: 100%">
       <el-table-column prop="num" label="序号" width="80"></el-table-column>
       <el-table-column prop="acc" label="用户名"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
@@ -30,7 +29,6 @@
         </template>
       </el-table-column>
     </el-table>
-
     <!-- 翻页 -->
     <div class="pages">
       <el-pagination
@@ -43,8 +41,6 @@
         :total="50"
       ></el-pagination>
     </div>
-
-
 <!-- 授权 -->
     <el-dialog title="角色授权" :visible.sync="dialogFormVisible1" width="30%">
       <el-form :model="form1" class="roleForm">
@@ -60,9 +56,7 @@
         <el-button @click="dialogFormVisible1 = false">取 消</el-button>
         <el-button type="primary" @click="clickSave1">确 定</el-button>
       </div>
-    </el-dialog>
-
-    
+    </el-dialog> 
   </el-card>
 </template>
 

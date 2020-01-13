@@ -11,7 +11,7 @@
       <el-col :span="18" style="text-align:right">
         <div class="rightTop">
           <el-input placeholder="请输入内容" v-model="search" clearable size="small"></el-input>
-          <el-button class="btnBg" size="small">搜索</el-button>
+          <el-button class="btnBg" size="small" icon="el-icon-search">搜索</el-button>
           <el-button class="btnBg" size="small" @click="clickAdd">新增</el-button>
         </div>
       </el-col>

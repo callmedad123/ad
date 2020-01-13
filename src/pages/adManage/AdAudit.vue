@@ -22,7 +22,7 @@
                 :value="item.value"
               ></el-option>
             </el-select>
-            <el-button  size="small" class="btnBg">搜索</el-button>
+            <el-button  size="small" icon="el-icon-search" class="btnBg">搜索</el-button>
           </div>
         </el-col>
       </el-row>
